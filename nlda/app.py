@@ -3,6 +3,7 @@ Il file letto resta in memoria per la sessione (un'ora senza uso) e non va mai s
 import os
 import time
 import uuid
+from datetime import date
 from pathlib import Path
 
 from fastapi import FastAPI, Request, Response, UploadFile
@@ -17,8 +18,11 @@ SCADENZA = 3600
 MAX_BYTE = 10 * 1024 * 1024
 
 
-def crea_app(ia=None, modo=None):
+def crea_app(ia=None, modo=None, tetti=None, oggi=date.today):
+    """tetti = (domande per visitatore al giorno, domande al giorno per tutti): solo online (F14, C17)."""
     modo = modo or os.environ.get("NLDA_MODO", "online")
+    tetti = tetti or (int(os.environ.get("NLDA_TETTO_PERSONA", 20)), int(os.environ.get("NLDA_TETTO_GIORNO", 300)))
+    conteggi = {"giorno": None, "tutti": 0, "persone": {}}
     if ia is None:
         from . import ia as fornitori
         ia = fornitori.Ollama() if modo == "pc" else fornitori.Groq()
@@ -38,6 +42,22 @@ def crea_app(ia=None, modo=None):
 
     def errore(chiave, dettagli=None, codice=400):
         return JSONResponse({"errore": chiave, "dettagli": dettagli or {}}, codice)
+
+    def tetto(request):
+        """C17: None se si può chiamare l'IA (e la conta), altrimenti il nome del tetto raggiunto. Sul PC niente tetti."""
+        if not ia.esce_dal_pc:
+            return None
+        if conteggi["giorno"] != oggi():
+            conteggi.update(giorno=oggi(), tutti=0, persone={})
+        chi = (request.headers.get("x-forwarded-for", "").split(",")[0].strip()
+               or (request.client.host if request.client else "?"))
+        if conteggi["tutti"] >= tetti[1]:
+            return "tetto_giorno"
+        if conteggi["persone"].get(chi, 0) >= tetti[0]:
+            return "tetto_persona"
+        conteggi["tutti"] += 1
+        conteggi["persone"][chi] = conteggi["persone"].get(chi, 0) + 1
+        return None
 
     @app.get("/api/modo")
     def modo_attuale():
@@ -64,6 +84,9 @@ def crea_app(ia=None, modo=None):
         if s["tabella"] is None:
             return errore("nessun_file")
         testo, lingua = str(corpo.get("testo", ""))[:500], _lingua(corpo)
+        limite = tetto(request)
+        if limite:
+            return errore(limite, {"tetti": list(tetti)}, 429)
         r = domanda.rispondi(s["tabella"], testo, ia, s["categorie"], s["precedente"], lingua)
         if r["richiesta"]:
             s["precedente"] = r["richiesta"]

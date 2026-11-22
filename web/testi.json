@@ -182,5 +182,13 @@
  "mostra_righe": {
   "it": "Mostra le righe ({n})",
   "en": "Show the rows ({n})"
+ },
+ "e_tetto_persona": {
+  "it": "Per oggi hai finito le domande online. Riprova domani, oppure avvia NLDA sul tuo PC: lì non ci sono limiti.",
+  "en": "You've used up today's online questions. Try again tomorrow, or run NLDA on your PC: there are no limits there."
+ },
+ "e_tetto_giorno": {
+  "it": "Per oggi le domande online sono finite per tutti. Riprova domani, oppure avvia NLDA sul tuo PC: lì non ci sono limiti.",
+  "en": "Today's online questions have run out for everyone. Try again tomorrow, or run NLDA on your PC: there are no limits there."
  }
 }
