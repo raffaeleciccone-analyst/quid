@@ -18,6 +18,8 @@ F = {
            "quando_mese": "A {mese} {anno}", "quando_anno": "Nel {anno}", "quando_tutto": "In tutto il file",
            "assente": "Nel file non c'è «{cosa}». Ci sono queste colonne: {colonne}.",
            "non_capito": "Non ho capito la domanda. Prova a dirla in un altro modo.",
+           "rifiutata": "Non posso rispondere a questa domanda con i dati del file.",
+           "errore": "Il calcolo non torna con le righe del file, quindi non ti do un numero.",
            "quale_anno": "Quale {mese}: {anni}?", "o": " o ",
            "uscite": "uscite", "entrate": "entrate", "di": "di",
            "op": {"somma": "somma", "conteggio": "conteggio", "media": "media", "massimo": "massimo", "minimo": "minimo", "elenco": "elenco"}},
@@ -31,6 +33,8 @@ F = {
            "quando_mese": "In {mese} {anno}", "quando_anno": "In {anno}", "quando_tutto": "Across the whole file",
            "assente": "The file has no «{cosa}». These are its columns: {colonne}.",
            "non_capito": "I didn't understand the question. Try asking it another way.",
+           "rifiutata": "I can't answer this question with the data in the file.",
+           "errore": "The calculation doesn't match the rows in the file, so I won't give you a number.",
            "quale_anno": "Which {mese}: {anni}?", "o": " or ",
            "uscite": "expenses", "entrate": "income", "di": "of",
            "op": {"somma": "sum", "conteggio": "count", "media": "average", "massimo": "highest", "minimo": "lowest", "elenco": "list"}},
@@ -129,6 +133,8 @@ def _pandas(ric, esito):
     elif ric.segno == "entrate":
         cond.append("(df['importo'] > 0)")
     base = f"df[{' & '.join(cond)}]" if cond else "df"
+    if ric.segno == "uscite":
+        base = f"(-{base}[['importo']])" if ric.misura == "importo" else base
     op = {"somma": "sum", "conteggio": "count", "media": "mean", "massimo": "max", "minimo": "min"}.get(ric.operazione)
     if ric.raggruppa:
         chiave = "df['data'].dt.to_period('M')" if ric.raggruppa == "mese" else f"'{ric.raggruppa}'"

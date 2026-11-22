@@ -47,6 +47,8 @@ def esegui(tabella, ric, categorie=None) -> Esito:
 
     if tabella.tipo == "conto" and ric.segno in ("uscite", "entrate"):
         d = d[d["importo"] < 0] if ric.segno == "uscite" else d[d["importo"] > 0]
+        if ric.segno == "uscite":                     # le spese diventano positive: "la spesa più alta" = massimo
+            d = d.assign(importo=-d["importo"])
 
     for f in ric.filtri:
         if f.colonna == "categoria":

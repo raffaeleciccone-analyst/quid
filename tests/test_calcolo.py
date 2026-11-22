@@ -36,7 +36,7 @@ def test_c01_bollette_ottobre_frase_numero_e_righe(conto):
     for parte in ("92,10 €", "64,30 €", "31,00 €"):
         assert parte in r["frase"]
     assert len(r["righe"]) == 3
-    assert round(-sum(x["importo"] for x in r["righe"]), 2) == 187.40
+    assert round(sum(x["importo"] for x in r["righe"]), 2) == 187.40        # le spese si mostrano positive
 
 
 def test_c01_se_righe_e_numero_non_tornano_niente_risposta(conto, monkeypatch):
@@ -113,3 +113,9 @@ def test_c16_ho_capito_e_frasi_leggibili_per_ogni_operazione(conto, vendite):
                 assert "{" not in r["frase"] + r["ho_capito"] and r["ho_capito"], (op, lingua, extra, r)
     q = _rispondi(conto, {**BOLLETTE_OTTOBRE_2026, "periodo": {"mese": 10}})
     assert q["frase"] == "Quale ottobre: 2025 o 2026?"
+
+
+def test_c01_la_spesa_piu_alta_e_il_massimo_delle_uscite(conto):
+    r = _rispondi(conto, {"tipo": "calcolo", "operazione": "massimo", "misura": "importo", "segno": "uscite",
+                          "periodo": {"mese": 10, "anno": 2026}})
+    assert "92,10 €" in r["frase"] and r["righe"][0]["descrizione"] == "ADDEBITO SDD ENEL ENERGIA SPA"
