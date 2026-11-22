@@ -19,6 +19,8 @@ F = {
            "assente": "Nel file non c'è «{cosa}». Ci sono queste colonne: {colonne}.",
            "non_capito": "Non ho capito la domanda. Prova a dirla in un altro modo.",
            "rifiutata": "Non posso rispondere a questa domanda con i dati del file.",
+           "non_trovato": "Nel file non ho trovato «{}».",
+           "nessuna_riga": "Nel file non ci sono righe per: {}.",
            "errore": "Il calcolo non torna con le righe del file, quindi non ti do un numero.",
            "quale_anno": "Quale {mese}: {anni}?", "o": " o ",
            "uscite": "uscite", "entrate": "entrate", "di": "di",
@@ -34,6 +36,8 @@ F = {
            "assente": "The file has no «{cosa}». These are its columns: {colonne}.",
            "non_capito": "I didn't understand the question. Try asking it another way.",
            "rifiutata": "I can't answer this question with the data in the file.",
+           "non_trovato": "I couldn't find «{}» in the file.",
+           "nessuna_riga": "There are no rows in the file for: {}.",
            "errore": "The calculation doesn't match the rows in the file, so I won't give you a number.",
            "quale_anno": "Which {mese}: {anni}?", "o": " or ",
            "uscite": "expenses", "entrate": "income", "di": "of",
@@ -51,7 +55,7 @@ def numero(x, lingua, soldi=True):
 
 def componi(ric, esito, tabella, lingua="it"):
     t = F[lingua]
-    vuota = {"frase": "", "ho_capito": "", "righe": [], "incerte": [], "grafico": None, "come": None,
+    vuota = {"frase": "", "numero": None, "ho_capito": "", "righe": [], "incerte": [], "grafico": None, "come": None,
              "domanda_indietro": None}
     if ric.tipo == "assente":
         return vuota | {"frase": t["assente"].format(cosa=ric.cosa or "?", colonne=", ".join(tabella.df.columns))}
@@ -63,12 +67,19 @@ def componi(ric, esito, tabella, lingua="it"):
                                                         anni=t["o"].join(str(a) for a in q["anni"])),
                         "domanda_indietro": q}
 
+    if esito.non_trovato:
+        return vuota | {"frase": t["non_trovato"].format(esito.non_trovato)}
+    if esito.nessuna_riga:
+        parole = _parole(ric, esito, lingua)
+        return vuota | {"frase": t["nessuna_riga"].format(parole), "ho_capito": parole}
     calcolo.controlla(ric, esito)                                          # C1: se non torna, niente risposta
     soldi = ric.misura in SOLDI
     n = numero(esito.numero, lingua, soldi) if esito.numero is not None else ""
     quando = _quando(esito.periodo, lingua)
     categoria = next((f.uguale for f in ric.filtri if f.colonna == "categoria"), None)
     cosa = t["in"].format(nome_categoria(categoria, lingua)) if categoria else ""
+    altri = [f.uguale for f in ric.filtri if f.colonna != "categoria"]
+    cosa += f" ({', '.join(altri)})" if altri else ""
 
     if ric.raggruppa and ric.operazione in ("massimo", "minimo"):
         frase = t[ric.operazione + "_gruppo"].format(Gruppo=ric.raggruppa.capitalize(), misura=ric.misura,
@@ -89,7 +100,7 @@ def componi(ric, esito, tabella, lingua="it"):
         frase += ": " + ", ".join(f"{r.descrizione} {numero(r[ric.misura], lingua, soldi)}"
                                   for _, r in esito.righe.iterrows())
     parole = _parole(ric, esito, lingua)
-    return {"frase": frase + ".", "ho_capito": parole, "righe": _record(esito.righe), "incerte": _record(esito.incerte),
+    return {"frase": frase + ".", "numero": esito.numero, "ho_capito": parole, "righe": _record(esito.righe), "incerte": _record(esito.incerte),
             "grafico": _grafico(ric, esito), "come": {"parole": parole, "pandas": _pandas(ric, esito)},
             "domanda_indietro": None}
 

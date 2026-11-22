@@ -2,6 +2,8 @@
 Entrambi hanno lo stesso metodo: chiedi(sistema, utente) → testo (JSON). Nessuna libreria in più: urllib."""
 import json
 import os
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -24,10 +26,16 @@ class Groq:
         self.modello = modello or os.environ.get("NLDA_MODELLO", "openai/gpt-oss-120b")
 
     def chiedi(self, sistema, utente):
-        r = _post(self.URL, {"model": self.modello, "temperature": 0, "response_format": {"type": "json_object"},
-                             "messages": [{"role": "system", "content": sistema}, {"role": "user", "content": utente}]},
-                  {"authorization": f"Bearer {self.chiave}"}, 60)
-        return r["choices"][0]["message"]["content"]
+        corpo = {"model": self.modello, "temperature": 0, "response_format": {"type": "json_object"},
+                 "messages": [{"role": "system", "content": sistema}, {"role": "user", "content": utente}]}
+        for tentativo in range(4):
+            try:
+                r = _post(self.URL, corpo, {"authorization": f"Bearer {self.chiave}"}, 60)
+                return r["choices"][0]["message"]["content"]
+            except urllib.error.HTTPError as e:     # 429: il piano gratuito ha un tetto al minuto, si aspetta e si riprova
+                if e.code != 429 or tentativo == 3:
+                    raise
+                time.sleep(min(float(e.headers.get("retry-after") or 5), 30))
 
 
 class Ollama:

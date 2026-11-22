@@ -18,6 +18,8 @@ class Esito:
     incerte: pd.DataFrame = field(default_factory=pd.DataFrame)   # F7: non entrano nel numero
     periodo: tuple | None = None                       # (mese, anno) usati davvero
     domanda_indietro: dict | None = None               # F6: {"mese": 10, "anni": [2025, 2026]}
+    non_trovato: str | None = None                     # F5: un testo cercato che nel file non c'è (mai uno "0,00 €")
+    nessuna_riga: bool = False                         # dopo i filtri non resta niente: niente numero
 
 
 def con_categorie(df, categorie):
@@ -55,8 +57,15 @@ def esegui(tabella, ric, categorie=None) -> Esito:
             esito.incerte = d[d["categoria_incerta"] == f.uguale]
             d = d[d["categoria"] == f.uguale]
         else:
-            d = d[d[f.colonna].astype(str).str.contains(f.uguale, case=False, regex=False)]
+            trovate = _cerca(d[f.colonna], f.uguale)
+            if not trovate.any():
+                esito.non_trovato = f.uguale
+                return esito
+            d = d[trovate]
 
+    if d.empty and ric.operazione != "conteggio":
+        esito.nessuna_riga = True
+        return esito
     m = ric.misura
     if ric.raggruppa:
         chiave = d["data"].dt.to_period("M").astype(str) if ric.raggruppa == "mese" else d[ric.raggruppa]
@@ -93,3 +102,13 @@ def controlla(ric, esito):
         atteso = esito.righe[ric.misura].sum() if ric.operazione == "somma" else esito.righe[ric.misura].iloc[0]
     if round(float(atteso), 2) != round(esito.numero, 2):
         raise CalcoloNonTorna(f"righe {atteso} contro numero {esito.numero}")
+
+
+def _cerca(colonna, testo):
+    """Il testo dentro la colonna, senza badare a maiuscole; se non c'è, la radice delle parole ("candele" → "candel")."""
+    valori = colonna.astype(str).str.lower()
+    trovate = valori.str.contains(testo.lower(), regex=False)
+    if not trovate.any():
+        radici = [p[:-1] if len(p) > 4 else p for p in testo.lower().split()]
+        trovate = valori.map(lambda v: all(r in v for r in radici))
+    return trovate

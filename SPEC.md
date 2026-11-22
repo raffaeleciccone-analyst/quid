@@ -164,3 +164,7 @@ impaginato come un PDF di banca, con saldo iniziale e finale) e un esempio pubbl
 - Quali banche: per ora estratti di esempio pubblici (D3). Più avanti, se l'utente vorrà, una prova su un suo
   PDF vero, tenuto solo sul suo PC.
 - ~~F12 da confermare~~ Confermata con l'approvazione del 22/11.
+- **IA locale su questo PC (prova del 22/11):** qwen2.5:3b 7/26 (non riconosce le categorie), qwen3:4b troppo lenta
+  (in 28 minuti non finisce il primo passo). Groq 26/26. La modalità PC funziona ma la qualità dipende dal modello e
+  dal computer: va scritto chiaramente nella pagina e nel README. Da decidere se suggerire un modello più grande.
+

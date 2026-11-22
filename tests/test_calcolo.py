@@ -119,3 +119,28 @@ def test_c01_la_spesa_piu_alta_e_il_massimo_delle_uscite(conto):
     r = _rispondi(conto, {"tipo": "calcolo", "operazione": "massimo", "misura": "importo", "segno": "uscite",
                           "periodo": {"mese": 10, "anno": 2026}})
     assert "92,10 €" in r["frase"] and r["righe"][0]["descrizione"] == "ADDEBITO SDD ENEL ENERGIA SPA"
+
+
+# ---- F5: un testo che non si trova non diventa uno "0,00 €" ----
+def test_c05_plurale_trova_lo_stesso_prodotto(vendite):
+    r = _rispondi(vendite, {"tipo": "calcolo", "operazione": "somma", "misura": "importo",
+                            "filtri": [{"colonna": "prodotto", "uguale": "candele"}], "periodo": {"mese": 12, "anno": 2025}})
+    assert "500,00 €" in r["frase"]
+
+
+def test_c05_testo_non_trovato_lo_dice_senza_zero(vendite):
+    r = _rispondi(vendite, {"tipo": "calcolo", "operazione": "somma", "misura": "importo",
+                            "filtri": [{"colonna": "prodotto", "uguale": "biciclette"}]})
+    assert "biciclette" in r["frase"] and not any(c.isdigit() for c in r["frase"]) and r["numero"] is None
+
+
+@pytest.mark.parametrize("r", [
+    {**BOLLETTE_OTTOBRE_2026, "periodo": {"mese": 10, "anno": 2023}},                       # anno che non c'è
+    {**BOLLETTE_OTTOBRE_2026, "filtri": [{"colonna": "categoria", "uguale": "salute"}]},     # categoria senza righe
+    {"tipo": "calcolo", "operazione": "media", "misura": "importo", "periodo": {"anno": 2023}},
+    {"tipo": "calcolo", "operazione": "massimo", "misura": "importo", "raggruppa": "mese", "periodo": {"anno": 2023}},
+])
+def test_c05_nessuna_riga_niente_zero(conto, r):
+    x = _rispondi(conto, r)
+    assert x["numero"] is None and "0,00" not in x["frase"] and "None" not in x["frase"], x["frase"]
+    assert x["frase"].startswith("Nel file non ci sono righe per:")

@@ -1,0 +1,637 @@
+{
+ "giuste": 7,
+ "totale": 26,
+ "categorie_bollette": [],
+ "esiti": [
+  {
+   "domanda": "Quanto ho speso in bollette a ottobre 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    187.4
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "A ottobre 2026 hai speso 0,00 € in bollette.",
+   "ho_capito": "somma di importo, uscite, bollette, ottobre 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "mese": 10,
+     "anno": 2026
+    },
+    "segno": "uscite"
+   },
+   "secondi": 9.8
+  },
+  {
+   "domanda": "Quanto ho speso in bollette a novembre 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    190.6
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "A novembre 2026 hai speso 0,00 € in bollette.",
+   "ho_capito": "somma di importo, uscite, bollette, novembre 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "mese": 11,
+     "anno": 2026
+    },
+    "segno": "uscite"
+   },
+   "secondi": 5.0
+  },
+  {
+   "domanda": "Quanto ho speso in bollette a ottobre?",
+   "ok": false,
+   "atteso": [
+    "domanda_indietro",
+    null
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "A ottobre 2023 hai speso 0,00 € in bollette.",
+   "ho_capito": "somma di importo, uscite, bollette, ottobre 2023",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "mese": 10,
+     "anno": 2023
+    },
+    "segno": "uscite"
+   },
+   "secondi": 6.3
+  },
+  {
+   "domanda": "Quanto ho speso in bollette nel 2025?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    1628.0
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "Nel 2025 hai speso 0,00 € in bollette.",
+   "ho_capito": "somma di importo, uscite, bollette, 2025",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "anno": 2025
+    },
+    "segno": "uscite"
+   },
+   "secondi": 4.6
+  },
+  {
+   "domanda": "Quanto ho speso all'Esselunga nel 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    1053.8
+   ],
+   "esito": "rifiutata",
+   "numero": null,
+   "frase": "Non posso rispondere a questa domanda con i dati del file.",
+   "ho_capito": "",
+   "richiesta": null,
+   "secondi": 13.9
+  },
+  {
+   "domanda": "Quanto ho incassato di stipendio nel 2025?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    22200.0
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "Nel 2025 hai incassato 0,00 € in stipendio.",
+   "ho_capito": "somma di importo, entrate, stipendio, 2025",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "stipendio"
+     }
+    ],
+    "periodo": {
+     "anno": 2025
+    },
+    "segno": "entrate"
+   },
+   "secondi": 4.7
+  },
+  {
+   "domanda": "Quante volte ho pagato TIM?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    23.0
+   ],
+   "esito": "rifiutata",
+   "numero": null,
+   "frase": "Non posso rispondere a questa domanda con i dati del file.",
+   "ho_capito": "",
+   "richiesta": null,
+   "secondi": 8.0
+  },
+  {
+   "domanda": "Quanto spendo in media di luce con ENEL?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    68.41
+   ],
+   "esito": "ok",
+   "numero": null,
+   "frase": "A dicembre 2023 la media di importo è  in energia.",
+   "ho_capito": "media di importo, energia, dicembre 2023",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "media",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "energia"
+     }
+    ],
+    "periodo": {
+     "mese": 12,
+     "anno": 2023
+    }
+   },
+   "secondi": 4.5
+  },
+  {
+   "domanda": "Qual è stata la spesa più alta a ottobre 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    92.1
+   ],
+   "esito": "ok",
+   "numero": null,
+   "frase": "Il valore più alto di importo è .",
+   "ho_capito": "massimo di importo, uscite, spesa, ottobre 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "massimo",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "spesa"
+     }
+    ],
+    "periodo": {
+     "mese": 10,
+     "anno": 2026
+    },
+    "segno": "uscite"
+   },
+   "secondi": 5.1
+  },
+  {
+   "domanda": "Quanto ho speso in totale nel 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    2680.25
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "Nel 2026 hai speso 0,00 € in spesa.",
+   "ho_capito": "somma di importo, uscite, spesa, 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "spesa"
+     }
+    ],
+    "periodo": {
+     "anno": 2026
+    },
+    "segno": "uscite"
+   },
+   "secondi": 5.0
+  },
+  {
+   "domanda": "Come sono andate le mie spese mese per mese nel 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    2680.25
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "Nel 2026, importo per mese: in tutto 0,00 €.",
+   "ho_capito": "elenco di importo, spesa, 2026, per mese",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "elenco",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "spesa"
+     }
+    ],
+    "periodo": {
+     "anno": 2026
+    },
+    "raggruppa": "mese"
+   },
+   "secondi": 4.7
+  },
+  {
+   "domanda": "Quanto ho guadagnato di profitto?",
+   "ok": false,
+   "atteso": [
+    "assente",
+    null
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "In tutto il file hai incassato 0,00 € in stipendio.",
+   "ho_capito": "somma di importo, entrate, stipendio",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "stipendio"
+     }
+    ],
+    "periodo": {},
+    "segno": "entrate"
+   },
+   "secondi": 4.8
+  },
+  {
+   "domanda": "Chi ha vinto lo scudetto?",
+   "ok": true,
+   "atteso": [
+    "non_capito",
+    null
+   ],
+   "esito": "non_capito",
+   "numero": null,
+   "frase": "Non ho capito la domanda. Prova a dirla in un altro modo.",
+   "ho_capito": "",
+   "richiesta": {
+    "tipo": "non_capito",
+    "filtri": [],
+    "cosa": "Chi ha vinto lo scudetto?"
+   },
+   "secondi": 1.9
+  },
+  {
+   "domanda": "e a novembre?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    190.6
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "A novembre 2026 hai speso 0,00 € in bollette.",
+   "ho_capito": "somma di importo, uscite, bollette, novembre 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "mese": 11,
+     "anno": 2026
+    },
+    "segno": "uscite"
+   },
+   "secondi": 10.5
+  },
+  {
+   "domanda": "In quale mese del 2026 ho speso di più in bollette?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    190.6
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "Mese con importo più alto: None, 0,00 €.",
+   "ho_capito": "massimo di importo, uscite, bollette, 2026, per mese",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "massimo",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "anno": 2026
+    },
+    "raggruppa": "mese",
+    "segno": "uscite"
+   },
+   "secondi": 5.1
+  },
+  {
+   "domanda": "How much did I spend on bills in October 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    187.4
+   ],
+   "esito": "ok",
+   "numero": 0.0,
+   "frase": "In October 2026 you spent €0.00 on bills.",
+   "ho_capito": "sum of importo, expenses, bills, October 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "categoria",
+      "uguale": "bollette"
+     }
+    ],
+    "periodo": {
+     "mese": 10,
+     "anno": 2026
+    },
+    "segno": "uscite"
+   },
+   "secondi": 5.0
+  },
+  {
+   "domanda": "Qual è il prodotto che vende di più?",
+   "ok": true,
+   "atteso": [
+    "ok",
+    11500.0
+   ],
+   "esito": "ok",
+   "numero": 11500.0,
+   "frase": "Prodotto con importo più alto: Candela profumata, 11.500,00 €.",
+   "ho_capito": "massimo di importo, per prodotto",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "massimo",
+    "misura": "importo",
+    "filtri": [],
+    "raggruppa": "prodotto"
+   },
+   "secondi": 3.0
+  },
+  {
+   "domanda": "Quanto ho incassato in totale nel 2025?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    13764.0
+   ],
+   "esito": "rifiutata",
+   "numero": null,
+   "frase": "Non posso rispondere a questa domanda con i dati del file.",
+   "ho_capito": "",
+   "richiesta": null,
+   "secondi": 8.7
+  },
+  {
+   "domanda": "Quante tazze ho venduto nel 2026?",
+   "ok": true,
+   "atteso": [
+    "ok",
+    330.0
+   ],
+   "esito": "ok",
+   "numero": 330.0,
+   "frase": "Nel 2026 il totale di quantita è 330 (Tazza in ceramica).",
+   "ho_capito": "somma di quantita, Tazza in ceramica, 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "quantita",
+    "filtri": [
+     {
+      "colonna": "prodotto",
+      "uguale": "Tazza in ceramica"
+     }
+    ],
+    "periodo": {
+     "anno": 2026
+    }
+   },
+   "secondi": 4.4
+  },
+  {
+   "domanda": "Qual è il prodotto che vende di meno?",
+   "ok": true,
+   "atteso": [
+    "ok",
+    "Cornice"
+   ],
+   "esito": "ok",
+   "numero": 3450.0,
+   "frase": "Prodotto con importo più basso: Cornice, 3.450,00 €.",
+   "ho_capito": "minimo di importo, per prodotto",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "minimo",
+    "misura": "importo",
+    "filtri": [],
+    "raggruppa": "prodotto"
+   },
+   "secondi": 2.6
+  },
+  {
+   "domanda": "Quanto ho venduto a marzo 2026?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    1147.0
+   ],
+   "esito": "ok",
+   "numero": 200.0,
+   "frase": "A marzo 2026 il totale di importo è 200,00 € (Quaderno).",
+   "ho_capito": "somma di importo, Quaderno, marzo 2026",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "prodotto",
+      "uguale": "Quaderno"
+     }
+    ],
+    "periodo": {
+     "mese": 3,
+     "anno": 2026
+    }
+   },
+   "secondi": 4.6
+  },
+  {
+   "domanda": "Come sono andate le vendite mese per mese?",
+   "ok": true,
+   "atteso": [
+    "ok",
+    26381.0
+   ],
+   "esito": "ok",
+   "numero": 26381.0,
+   "frase": "In tutto il file, importo per mese: in tutto 26.381,00 €.",
+   "ho_capito": "somma di importo, per mese",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [],
+    "raggruppa": "mese"
+   },
+   "secondi": 2.6
+  },
+  {
+   "domanda": "Quanto ho incassato con le candele a dicembre 2025?",
+   "ok": true,
+   "atteso": [
+    "ok",
+    500.0
+   ],
+   "esito": "ok",
+   "numero": 500.0,
+   "frase": "A dicembre 2025 il totale di importo è 500,00 € (Candela profumata).",
+   "ho_capito": "somma di importo, entrate, Candela profumata, dicembre 2025",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "somma",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "prodotto",
+      "uguale": "Candela profumata"
+     }
+    ],
+    "periodo": {
+     "mese": 12,
+     "anno": 2025
+    },
+    "segno": "entrate"
+   },
+   "secondi": 5.5
+  },
+  {
+   "domanda": "Qual è il prezzo medio dei quaderni?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    4.0
+   ],
+   "esito": "ok",
+   "numero": 100.0,
+   "frase": "In tutto il file la media di importo è 100,00 € (Quaderno).",
+   "ho_capito": "media di importo, Quaderno",
+   "richiesta": {
+    "tipo": "calcolo",
+    "operazione": "media",
+    "misura": "importo",
+    "filtri": [
+     {
+      "colonna": "prodotto",
+      "uguale": "Quaderno"
+     }
+    ],
+    "periodo": {}
+   },
+   "secondi": 4.2
+  },
+  {
+   "domanda": "Quanti quaderni ho venduto in tutto?",
+   "ok": false,
+   "atteso": [
+    "ok",
+    1150.0
+   ],
+   "esito": "rifiutata",
+   "numero": null,
+   "frase": "Non posso rispondere a questa domanda con i dati del file.",
+   "ho_capito": "",
+   "richiesta": null,
+   "secondi": 7.5
+  },
+  {
+   "domanda": "Quanto ho speso in pubblicità?",
+   "ok": true,
+   "atteso": [
+    "assente",
+    null
+   ],
+   "esito": "assente",
+   "numero": null,
+   "frase": "Nel file non c'è «pubblicità». Ci sono queste colonne: data, prodotto, quantita, importo, prezzo.",
+   "ho_capito": "",
+   "richiesta": {
+    "tipo": "assente",
+    "filtri": [],
+    "cosa": "pubblicità"
+   },
+   "secondi": 1.5
+  }
+ ]
+}

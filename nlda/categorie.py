@@ -2,7 +2,11 @@
 L'IA vede solo le descrizioni diverse, senza cifre (F9). Le categorie sono un elenco fisso, con il nome IT/EN."""
 import json
 
-from .privacy import senza_cifre
+import re
+
+
+def senza_cifre(testo):  # come privacy.senza_cifre (qui per non importare privacy, che importa questo file)
+    return re.sub(r"\d", "#", str(testo))
 
 CATEGORIE = {
     "bollette": ("bollette", "bills"), "spesa": ("spesa", "groceries"), "acquisti_online": ("acquisti online", "online shopping"),

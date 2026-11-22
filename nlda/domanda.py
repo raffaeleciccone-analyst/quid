@@ -17,12 +17,27 @@ Regole:
 - misura, colonna e raggruppa: SOLO nomi tra le COLONNE date, oppure "categoria" (estratto conto) e "mese" per raggruppa
 - negli estratti conto le uscite sono importi negativi: per "quanto ho speso" usa segno "uscite", per "quanto ho
   incassato/ricevuto" segno "entrate"; categoria è una di: """ + ", ".join(CATEGORIE) + """
+- se la domanda nomina un tipo di spesa o entrata (bollette, spesa, stipendio, ristoranti...) filtra su "categoria",
+  NON su "descrizione"; filtra su "descrizione" solo quando la domanda nomina un negozio o un'azienda (es. Esselunga, ENEL)
 - "uguale" su una colonna di testo cerca quel testo dentro la colonna (es. il nome di un prodotto o di un negozio)
+- profitto, utile, margine, guadagno netto, costi di pubblicità e simili NON sono entrate né uscite: se non c'è una
+  colonna con quel significato rispondi {"tipo": "assente", "cosa": "..."}
 - periodo: metti l'anno solo se la domanda lo dice o se c'è nella RICHIESTA PRECEDENTE; ometti periodo se non c'è
-- "il prodotto che vende di più": operazione massimo, misura importo, raggruppa prodotto
+- "il prodotto che vende di più / di meno": operazione massimo / minimo, misura importo (in euro, a meno che la
+  domanda dica pezzi o quantità), raggruppa prodotto
+- in "uguale" copia il nome come appare tra i TESTI DEL FILE (es. "Candela profumata", non "candele")
+- nelle vendite "quanto ho venduto / incassato / fatturato" è in euro (misura importo); misura quantita solo se la
+  domanda dice pezzi, quantità o "quanti/quante"
 - "mese per mese", "andamento": raggruppa "mese"
 - se c'è una RICHIESTA PRECEDENTE e la domanda la continua ("e a novembre?"), restituisci la richiesta completa aggiornata
-- ometti i campi che non servono"""
+- ometti i campi che non servono
+Esempi:
+"Quanto ho speso in bollette a marzo 2025?" → {"tipo": "calcolo", "operazione": "somma", "misura": "importo",
+ "segno": "uscite", "filtri": [{"colonna": "categoria", "uguale": "bollette"}], "periodo": {"mese": 3, "anno": 2025}}
+"Qual è il prodotto che vende di più?" → {"tipo": "calcolo", "operazione": "massimo", "misura": "importo",
+ "raggruppa": "prodotto"}
+"Quanti pezzi di Quaderno ho venduto?" → {"tipo": "calcolo", "operazione": "somma", "misura": "quantita",
+ "filtri": [{"colonna": "prodotto", "uguale": "Quaderno"}]}"""
 
 
 def rispondi(tabella, testo, ia, categorie, precedente, lingua="it") -> dict:
@@ -42,15 +57,18 @@ def rispondi(tabella, testo, ia, categorie, precedente, lingua="it") -> dict:
                 break
     if ric is None:
         return _messaggio(esito, lingua)
+    esito = calcolo.esegui(tabella, ric, categorie)
     try:
-        r = risposta.componi(ric, calcolo.esegui(tabella, ric, categorie), tabella, lingua)
+        r = risposta.componi(ric, esito, tabella, lingua)
     except calcolo.CalcoloNonTorna:
         return _messaggio("errore", lingua)
-    r["esito"] = ("domanda_indietro" if r["domanda_indietro"] else ric.tipo if ric.tipo != "calcolo" else "ok")
+    r["esito"] = ("domanda_indietro" if esito.domanda_indietro else "non_trovato" if esito.non_trovato
+                  else "nessuna_riga" if esito.nessuna_riga
+                  else ric.tipo if ric.tipo != "calcolo" else "ok")
     r["richiesta"] = ric.model_dump(exclude_none=True)
     return r
 
 
 def _messaggio(esito, lingua):
-    return {"esito": esito, "frase": risposta.F[lingua][esito], "ho_capito": "", "righe": [], "incerte": [],
+    return {"esito": esito, "frase": risposta.F[lingua][esito], "numero": None, "ho_capito": "", "righe": [], "incerte": [],
             "grafico": None, "come": None, "domanda_indietro": None, "richiesta": None}

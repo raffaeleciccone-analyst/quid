@@ -132,11 +132,14 @@ tests/            un file per gruppo di criteri; l'IA nei test è finta (rispost
   resta sul PDF finto e lo si scrive nelle domande aperte.
 
 ## 6. Da fare (fasi)
-- [ ] 0. File di prova con numeri noti (`prove/crea_file.py`).
-- [ ] 1. Lettura CSV/Excel e file sporco (C8, C12, C15).
-- [ ] 2. Richiesta, calcolo e frasi con IA finta (C1-C5, C20).
-- [ ] 3. Ambiguità e categorie (C6, C7).
-- [ ] 4. Privacy e IA vere (C9-C11) + prova su domande vere.
+- [x] 0. File di prova con numeri noti (`prove/crea_file.py`).
+- [x] 1. Lettura CSV/Excel e file sporco (C8, C12, C15).
+- [x] 2. Richiesta, calcolo e frasi con IA finta (C1-C5, C20).
+- [x] 3. Ambiguità e categorie (C6, C7).
+- [x] 4. Privacy e IA vere (C9-C11) + prova su domande vere: Groq 26/26 (`prove/ia_groq_*.json`).
+  Scelte nuove: le spese si calcolano come importi positivi ("la spesa più alta" = massimo); se dopo i filtri non resta
+  nessuna riga o un testo non si trova, niente numero ("Nel file non ci sono righe per: …"), mai uno "0,00 €";
+  "candele" trova "Candela" (radice della parola); Groq riprova da solo quando dice 429; istruzioni con esempi.
 - [ ] 5. PDF e saldi (C13, C14).
 - [ ] 6. Pagina: conversazione, IT/EN, telefono (C16, C18, C19).
 - [ ] 7. Tetti e pubblicazione (C17); poi, col via libera, il cambio con il vecchio NLDA.
