@@ -97,6 +97,56 @@ def scrivi_vendite(df):
     csv.to_csv(CARTELLA / "vendite.csv", sep=";", index=False, encoding="utf-8")
 
 
+SALDO_INIZIALE = 5000.00
+
+
+def scrivi_pdf(df, nome, togli=None, con_saldi=True):
+    """Un estratto conto impaginato come quello di una banca: intestazione, saldo iniziale, colonne Addebiti/Accrediti
+    su più pagine, saldo finale. `togli` = indice di una riga da non stampare (il PDF "rotto" di C14)."""
+    from reportlab.lib.pagesizes import A4
+    from reportlab.pdfgen import canvas
+    c = canvas.Canvas(str(CARTELLA / nome), pagesize=A4)
+    righe = [r for i, r in df.iterrows() if i != togli]
+    finale = round(SALDO_INIZIALE + df["importo"].sum(), 2)        # il saldo vero, anche se una riga manca
+
+    def testata(pagina):
+        c.setFont("Helvetica-Bold", 13)
+        c.drawString(40, 800, "Banca Esempio S.p.A. - Estratto conto corrente")
+        c.setFont("Helvetica", 9)
+        c.drawString(40, 785, f"Intestatario: Mario Rossi   IBAN {IBAN}   Pagina {pagina}")
+        c.setFont("Helvetica-Bold", 9)
+        for x, t in ((40, "Data"), (110, "Descrizione"), (400, "Addebiti"), (480, "Accrediti")):
+            c.drawString(x, 760, t)
+        c.setFont("Helvetica", 8)
+
+    pagina, y = 1, 740
+    testata(pagina)
+    if con_saldi:
+        c.drawString(110, y, f"SALDO INIZIALE AL {df['data'].min().strftime('%d/%m/%Y')}")
+        c.drawRightString(540, y, euro(SALDO_INIZIALE))
+        y -= 14
+    for r in righe:
+        if y < 60:
+            c.showPage()
+            pagina, y = pagina + 1, 740
+            testata(pagina)
+        c.drawString(40, y, r.data.strftime("%d/%m/%Y"))
+        c.drawString(110, y, r.descrizione)
+        c.drawRightString(450 if r.importo < 0 else 540, y, euro(abs(r.importo)))
+        y -= 14
+    if con_saldi:
+        c.drawString(110, y - 6, f"SALDO FINALE AL {df['data'].max().strftime('%d/%m/%Y')}")
+        c.drawRightString(540, y - 6, euro(finale))
+    c.save()
+
+
+def scrivi_lettera_pdf():
+    from reportlab.pdfgen import canvas
+    c = canvas.Canvas(str(CARTELLA / "lettera.pdf"))
+    c.drawString(60, 760, "Caro Mario, ti scrivo per dirti che domani non ci sono.")
+    c.save()
+
+
 def scrivi_non_tabelle():
     (CARTELLA / "vuoto.csv").write_bytes(b"")
     (CARTELLA / "immagine.png").write_bytes(bytes.fromhex(
@@ -106,7 +156,12 @@ def scrivi_non_tabelle():
 
 if __name__ == "__main__":
     CARTELLA.mkdir(exist_ok=True)
-    scrivi_conto(movimenti())
+    mov = movimenti()
+    scrivi_conto(mov)
+    scrivi_pdf(mov, "conto.pdf")
+    scrivi_pdf(mov, "conto_pdf_rotto.pdf", togli=int(mov.index[mov.descrizione.str.contains("A2A")][-2]))   # C14
+    scrivi_pdf(mov, "conto_senza_saldi.pdf", con_saldi=False)
+    scrivi_lettera_pdf()
     scrivi_vendite(vendite())
     scrivi_non_tabelle()
     print("file scritti in", CARTELLA)

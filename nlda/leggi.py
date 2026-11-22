@@ -19,10 +19,10 @@ NOMI = {  # nome standard: nomi possibili nell'intestazione (senza accenti, minu
 
 
 class FileNonLeggibile(Exception):
-    """Il file non è una tabella leggibile. `chiave` sceglie il messaggio in testi.json (IT/EN)."""
-    def __init__(self, chiave):
+    """Il file non è una tabella leggibile. `chiave` sceglie il messaggio (IT/EN), `dettagli` i numeri da mostrare."""
+    def __init__(self, chiave, dettagli=None):
         super().__init__(chiave)
-        self.chiave = chiave
+        self.chiave, self.dettagli = chiave, dettagli or {}
 
 
 @dataclass
@@ -36,13 +36,29 @@ class Tabella:
 def leggi(dati: bytes, nome: str) -> Tabella:
     if not dati.strip():
         raise FileNonLeggibile("vuoto")
+    if dati[:4] == b"%PDF":
+        return _da_pdf(dati)
     if dati[:2] == b"PK" or nome.lower().endswith((".xlsx", ".xls")):
         grezzo = pd.read_excel(io.BytesIO(dati), dtype=object)
-    elif b"\x00" in dati[:1024] or dati[:4] in (b"\x89PNG", b"%PDF", b"\xff\xd8\xff\xe0"):
+    elif b"\x00" in dati[:1024] or dati[:4] in (b"\x89PNG", b"\xff\xd8\xff\xe0"):
         raise FileNonLeggibile("formato")
     else:
         grezzo = _csv(dati)
     return _pulisci(grezzo)
+
+
+def _da_pdf(dati):
+    """F11, F12: un PDF letto male non diventa un numero sbagliato."""
+    from . import pdf
+    df, saldi = pdf.leggi_pdf(dati)
+    if df.empty:
+        raise FileNonLeggibile("formato")
+    if saldi is None:
+        return Tabella("conto", df, [{"chiave": "senza_saldi"}])
+    non_torna = pdf.controlla_saldi(df, saldi)
+    if non_torna:
+        raise FileNonLeggibile("saldi_non_tornano", non_torna)
+    return Tabella("conto", df, [], saldi)
 
 
 def _csv(dati):
