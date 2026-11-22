@@ -140,6 +140,8 @@ tests/            un file per gruppo di criteri; l'IA nei test è finta (rispost
   Scelte nuove: le spese si calcolano come importi positivi ("la spesa più alta" = massimo); se dopo i filtri non resta
   nessuna riga o un testo non si trova, niente numero ("Nel file non ci sono righe per: …"), mai uno "0,00 €";
   "candele" trova "Candela" (radice della parola); Groq riprova da solo quando dice 429; istruzioni con esempi.
-- [ ] 5. PDF e saldi (C13, C14).
+- [x] 5. PDF e saldi (C13, C14). Le colonne Addebiti/Accrediti si leggono dalla riga d'intestazione (non dalle
+  descrizioni "ADDEBITO SDD …": era il primo errore, scoperto proprio dal controllo dei saldi). Nessun estratto pubblico
+  di banca vera utilizzabile: si prova sul PDF finto; il PDF vero dell'utente resta una prova facoltativa sul suo PC.
 - [ ] 6. Pagina: conversazione, IT/EN, telefono (C16, C18, C19).
 - [ ] 7. Tetti e pubblicazione (C17); poi, col via libera, il cambio con il vecchio NLDA.

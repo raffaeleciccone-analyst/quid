@@ -161,7 +161,8 @@ impaginato come un PDF di banca, con saldo iniziale e finale) e un esempio pubbl
 
 ## 7. Domande aperte
 - ~~Cosa del vecchio progetto tenere~~ Risolta il 22/11: vedi "Cosa NON fa".
-- Quali banche: per ora estratti di esempio pubblici (D3). Più avanti, se l'utente vorrà, una prova su un suo
+- Quali banche: cercati il 22/11 estratti di esempio pubblici di banche italiane: nessuno utilizzabile (le banche
+  pubblicano guide e contratti, non estratti con movimenti). Per ora si resta sul PDF finto `conto.pdf`. Più avanti, se l'utente vorrà, una prova su un suo
   PDF vero, tenuto solo sul suo PC.
 - ~~F12 da confermare~~ Confermata con l'approvazione del 22/11.
 - **IA locale su questo PC (prova del 22/11):** qwen2.5:3b 7/26 (non riconosce le categorie), qwen3:4b troppo lenta
