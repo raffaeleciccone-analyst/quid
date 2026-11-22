@@ -1,6 +1,7 @@
 """La risposta la scrive il programma, non l'IA: frase con il numero, righe, "Ho capito", grafico sì/no,
 "come l'ho calcolato". SPEC F1-F5, F13; criteri C1-C5."""
 from . import calcolo
+from .categorie import nome as nome_categoria
 
 MESI = {"it": ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre",
                "ottobre", "novembre", "dicembre"],
@@ -63,7 +64,7 @@ def componi(ric, esito, tabella, lingua="it"):
     n = numero(esito.numero, lingua, soldi) if esito.numero is not None else ""
     quando = _quando(esito.periodo, lingua)
     categoria = next((f.uguale for f in ric.filtri if f.colonna == "categoria"), None)
-    cosa = t["in"].format(categoria) if categoria else ""
+    cosa = t["in"].format(nome_categoria(categoria, lingua)) if categoria else ""
 
     if ric.raggruppa and ric.operazione in ("massimo", "minimo"):
         frase = t[ric.operazione + "_gruppo"].format(Gruppo=ric.raggruppa.capitalize(), misura=ric.misura,
@@ -106,7 +107,7 @@ def _parole(ric, esito, lingua):
     pezzi = [f"{op} {t['di']} {ric.misura}" if ric.misura else op]
     if ric.segno in ("uscite", "entrate"):
         pezzi.append(t[ric.segno])
-    pezzi += [f.uguale for f in ric.filtri]
+    pezzi += [nome_categoria(f.uguale, lingua) if f.colonna == "categoria" else f.uguale for f in ric.filtri]
     if esito.periodo:
         mese, anno = esito.periodo
         pezzi.append(" ".join(str(x) for x in (MESI[lingua][mese - 1] if mese else None, anno) if x))
