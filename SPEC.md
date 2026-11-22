@@ -22,6 +22,8 @@ li deve calcolare il codice, e il modello li racconta soltanto.
 - F1. Risponde a una domanda in italiano con **una frase che contiene il numero** e, se serve, come si
   compone (es. "A ottobre hai speso 187,40 € in bollette: luce 92,10 €, gas 64,30 €, telefono 31,00 €").
 - F2. Mostra sempre **le righe del file da cui viene il numero**, così l'utente controlla che siano quelle giuste.
+  *(22/11, bozza della pagina approvata: la frase resta corta, "come si compone" lo mostra la tabella delle righe con
+  il totale; l'andamento dice "da quanto a quanto", es. "da 123,00 € a gennaio a 190,60 € a novembre")*
 - F3. Mostra un **grafico solo quando ha senso** (un andamento nel tempo, un confronto fra poche voci), non a ogni risposta.
 - F4. Il calcolo esatto è **nascosto dietro "mostra come l'ho calcolato"**: c'è per chi lo vuole, ma non è la prova principale.
 

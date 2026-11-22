@@ -32,9 +32,8 @@ def _rispondi(tabella, r, lingua="it"):
 # ---- C1: frase con il numero e righe la cui somma è il numero ----
 def test_c01_bollette_ottobre_frase_numero_e_righe(conto):
     r = _rispondi(conto, BOLLETTE_OTTOBRE_2026)
-    assert "187,40 €" in r["frase"]
-    for parte in ("92,10 €", "64,30 €", "31,00 €"):
-        assert parte in r["frase"]
+    assert r["frase"] == "A ottobre 2026 hai speso 187,40 € in bollette."     # corta: il dettaglio è nelle righe
+    assert sorted(x["importo"] for x in r["righe"]) == [31.00, 64.30, 92.10]
     assert len(r["righe"]) == 3
     assert round(sum(x["importo"] for x in r["righe"]), 2) == 187.40        # le spese si mostrano positive
 
@@ -144,3 +143,15 @@ def test_c05_nessuna_riga_niente_zero(conto, r):
     x = _rispondi(conto, r)
     assert x["numero"] is None and "0,00" not in x["frase"] and "None" not in x["frase"], x["frase"]
     assert x["frase"].startswith("Nel file non ci sono righe per:")
+
+
+def test_c03_andamento_dice_da_quanto_a_quanto(conto):
+    r = _rispondi(conto, {**BOLLETTE_OTTOBRE_2026, "periodo": {"anno": 2026}, "raggruppa": "mese"})
+    assert r["frase"] == "Nel 2026 hai speso 1.557,00 € in bollette, da 123,00 € a gennaio a 190,60 € a novembre."
+    assert r["grafico"] == "linea"
+
+
+def test_c01_il_numero_da_evidenziare_e_quello_della_frase(conto):
+    r = _rispondi(conto, BOLLETTE_OTTOBRE_2026)
+    assert r["numero_testo"] == "187,40 €" and r["numero_testo"] in r["frase"]
+    assert _rispondi(conto, BOLLETTE_OTTOBRE_2026, "en")["numero_testo"] == "€187.40"

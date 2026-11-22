@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NLDA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+<header><div class="wrap">
+  <span class="nome">NLDA<small data-t="sottotitolo"></small></span>
+  <span class="modo" id="modo"></span>
+  <div class="lingua" role="group" aria-label="IT / EN"><button type="button" data-lingua="it">IT</button><button type="button" data-lingua="en">EN</button></div>
+</div></header>
+<main class="wrap">
+  <section class="carica" id="carica">
+    <h1 data-t="carica_titolo"></h1>
+    <p data-t="carica_spiega"></p>
+    <label class="pulsante"><input type="file" id="file" accept=".csv,.xlsx,.xls,.pdf,.txt"><span data-t="carica_pulsante"></span></label>
+    <p class="oppure"><span data-t="oppure"></span>
+      <button type="button" class="esempio" data-esempio="estratto_conto_esempio.csv" data-t="esempio_conto"></button>
+      <button type="button" class="esempio" data-esempio="vendite_esempio.xlsx" data-t="esempio_vendite"></button></p>
+    <p class="errore" id="errore-file" hidden></p>
+  </section>
+  <section class="file" id="scheda-file" hidden></section>
+  <div id="risposte"></div>
+</main>
+<form class="barra" id="barra" hidden><div class="wrap">
+  <div class="campo"><input id="domanda" maxlength="500" autocomplete="off" aria-label="domanda"><button type="submit" data-t="chiedi"></button></div>
+  <div class="esempi" id="esempi"></div>
+  <div class="sotto"><button type="button" id="nuova" data-t="nuova"></button><span data-t="nuova_spiega"></span></div>
+</div></form>
+<script src="app.js"></script>
+</body>
+</html>

@@ -23,6 +23,7 @@ F = {
            "nessuna_riga": "Nel file non ci sono righe per: {}.",
            "errore": "Il calcolo non torna con le righe del file, quindi non ti do un numero.",
            "quale_anno": "Quale {mese}: {anni}?", "o": " o ",
+           "da_a": ", da {a} a {mese_a} a {b} a {mese_b}",
            "uscite": "uscite", "entrate": "entrate", "di": "di",
            "op": {"somma": "somma", "conteggio": "conteggio", "media": "media", "massimo": "massimo", "minimo": "minimo", "elenco": "elenco"}},
     "en": {"speso": "{quando} you spent {n}{cosa}", "incassato": "{quando} you received {n}{cosa}",
@@ -40,6 +41,7 @@ F = {
            "nessuna_riga": "There are no rows in the file for: {}.",
            "errore": "The calculation doesn't match the rows in the file, so I won't give you a number.",
            "quale_anno": "Which {mese}: {anni}?", "o": " or ",
+           "da_a": ", from {a} in {mese_a} to {b} in {mese_b}",
            "uscite": "expenses", "entrate": "income", "di": "of",
            "op": {"somma": "sum", "conteggio": "count", "media": "average", "massimo": "highest", "minimo": "lowest", "elenco": "list"}},
 }
@@ -55,7 +57,7 @@ def numero(x, lingua, soldi=True):
 
 def componi(ric, esito, tabella, lingua="it"):
     t = F[lingua]
-    vuota = {"frase": "", "numero": None, "ho_capito": "", "righe": [], "incerte": [], "grafico": None, "come": None,
+    vuota = {"frase": "", "numero": None, "numero_testo": None, "ho_capito": "", "righe": [], "incerte": [], "grafico": None, "come": None,
              "domanda_indietro": None}
     if ric.tipo == "assente":
         return vuota | {"frase": t["assente"].format(cosa=ric.cosa or "?", colonne=", ".join(tabella.df.columns))}
@@ -84,7 +86,7 @@ def componi(ric, esito, tabella, lingua="it"):
     if ric.raggruppa and ric.operazione in ("massimo", "minimo"):
         frase = t[ric.operazione + "_gruppo"].format(Gruppo=ric.raggruppa.capitalize(), misura=ric.misura,
                                                      etichetta=esito.etichetta, n=n)
-    elif ric.raggruppa:
+    elif ric.raggruppa and ric.raggruppa != "mese":
         frase = t["andamento"].format(quando=quando, misura=ric.misura or "", gruppo=ric.raggruppa, n=n)
     elif ric.operazione == "somma" and tabella.tipo == "conto" and ric.segno in ("uscite", "entrate"):
         frase = t["speso" if ric.segno == "uscite" else "incassato"].format(quando=quando, n=n, cosa=cosa)
@@ -96,13 +98,21 @@ def componi(ric, esito, tabella, lingua="it"):
         frase = t[ric.operazione].format(quando=quando, misura=ric.misura, n=n, cosa=cosa)
     else:
         frase = t["elenco"]
-    if ric.operazione == "somma" and not ric.raggruppa and 0 < len(esito.righe) <= 5 and "descrizione" in esito.righe:
-        frase += ": " + ", ".join(f"{r.descrizione} {numero(r[ric.misura], lingua, soldi)}"
-                                  for _, r in esito.righe.iterrows())
+    # la frase resta corta: il dettaglio voce per voce è nella tabella delle righe (bozza approvata il 22/11)
+    if ric.raggruppa == "mese" and esito.gruppi is not None and len(esito.gruppi) > 1:
+        g = esito.gruppi
+        frase += t["da_a"].format(a=numero(g.iloc[0], lingua, soldi), mese_a=_mese(g.index[0], lingua),
+                                  b=numero(g.iloc[-1], lingua, soldi), mese_b=_mese(g.index[-1], lingua))
     parole = _parole(ric, esito, lingua)
-    return {"frase": frase + ".", "numero": esito.numero, "ho_capito": parole, "righe": _record(esito.righe), "incerte": _record(esito.incerte),
+    return {"frase": frase + ".", "numero": esito.numero, "numero_testo": n or None, "ho_capito": parole, "righe": _record(esito.righe), "incerte": _record(esito.incerte),
             "grafico": _grafico(ric, esito), "come": {"parole": parole, "pandas": _pandas(ric, esito)},
             "domanda_indietro": None}
+
+
+def _mese(periodo, lingua):
+    """'2026-01' → 'gennaio' (o 'gennaio 2025' se serve l'anno)."""
+    anno, mese = str(periodo)[:4], int(str(periodo)[5:7])
+    return MESI[lingua][mese - 1]
 
 
 def _quando(periodo, lingua):

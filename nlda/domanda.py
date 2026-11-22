@@ -70,5 +70,5 @@ def rispondi(tabella, testo, ia, categorie, precedente, lingua="it") -> dict:
 
 
 def _messaggio(esito, lingua):
-    return {"esito": esito, "frase": risposta.F[lingua][esito], "numero": None, "ho_capito": "", "righe": [], "incerte": [],
+    return {"esito": esito, "frase": risposta.F[lingua][esito], "numero": None, "numero_testo": None, "ho_capito": "", "righe": [], "incerte": [],
             "grafico": None, "come": None, "domanda_indietro": None, "richiesta": None}

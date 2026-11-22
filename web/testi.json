@@ -1,0 +1,186 @@
+{
+ "sottotitolo": {
+  "it": "domande ai tuoi dati",
+  "en": "questions about your data"
+ },
+ "modo_online": {
+  "it": "Online · i tuoi importi non escono",
+  "en": "Online · your amounts never leave"
+ },
+ "modo_pc": {
+  "it": "Sul tuo PC · niente esce dal computer",
+  "en": "On your PC · nothing leaves the computer"
+ },
+ "carica_titolo": {
+  "it": "Carica il tuo file",
+  "en": "Upload your file"
+ },
+ "carica_spiega": {
+  "it": "Estratto conto o vendite, in CSV, Excel o PDF. Il file resta solo per questa visita.",
+  "en": "A bank statement or sales, as CSV, Excel or PDF. The file is kept only for this visit."
+ },
+ "carica_pulsante": {
+  "it": "Scegli il file",
+  "en": "Choose a file"
+ },
+ "oppure": {
+  "it": "oppure prova con un esempio:",
+  "en": "or try an example:"
+ },
+ "esempio_conto": {
+  "it": "Estratto conto",
+  "en": "Bank statement"
+ },
+ "esempio_vendite": {
+  "it": "Vendite di un negozio",
+  "en": "Shop sales"
+ },
+ "attendi": {
+  "it": "Leggo il file…",
+  "en": "Reading the file…"
+ },
+ "pensa": {
+  "it": "Ci penso…",
+  "en": "Thinking…"
+ },
+ "cambia_file": {
+  "it": "cambia file",
+  "en": "change file"
+ },
+ "tipo_conto": {
+  "it": "estratto conto · {n} movimenti",
+  "en": "bank statement · {n} transactions"
+ },
+ "tipo_vendite": {
+  "it": "vendite · {n} righe",
+  "en": "sales · {n} rows"
+ },
+ "tipo_altro": {
+  "it": "tabella · {n} righe",
+  "en": "table · {n} rows"
+ },
+ "sistemato": {
+  "it": "Ho sistemato: {cose}.",
+  "en": "I fixed: {cose}."
+ },
+ "s_righe_vuote": {
+  "it": "{n} righe vuote",
+  "en": "{n} empty rows"
+ },
+ "s_righe_totale": {
+  "it": "{n} riga di totale",
+  "en": "{n} total row"
+ },
+ "s_entrate_uscite": {
+  "it": "colonne Entrate/Uscite unite",
+  "en": "Income/Expense columns merged"
+ },
+ "s_senza_saldi": {
+  "it": "il PDF non ha i saldi: controlla le righe lette",
+  "en": "the PDF has no balances: check the rows read"
+ },
+ "saldi_ok": {
+  "it": "Saldi controllati: {a} + movimenti = {b} ✓",
+  "en": "Balances checked: {a} + transactions = {b} ✓"
+ },
+ "esce_online": {
+  "it": "Cosa mando all'IA online: nomi delle colonne e {n} testi, nessun importo né data",
+  "en": "What I send to the online AI: column names and {n} texts, no amounts or dates"
+ },
+ "esce_pc": {
+  "it": "L'IA è sul tuo PC: niente esce dal computer",
+  "en": "The AI runs on your PC: nothing leaves the computer"
+ },
+ "segnaposto": {
+  "it": "Fai una domanda sul tuo file…",
+  "en": "Ask a question about your file…"
+ },
+ "chiedi": {
+  "it": "Chiedi",
+  "en": "Ask"
+ },
+ "nuova": {
+  "it": "Nuova domanda",
+  "en": "New question"
+ },
+ "nuova_spiega": {
+  "it": "· ricordo le domande precedenti finché non premi qui",
+  "en": "· I remember previous questions until you press here"
+ },
+ "ho_capito": {
+  "it": "Ho capito:",
+  "en": "I understood:"
+ },
+ "totale_righe": {
+  "it": "Totale delle righe",
+  "en": "Total of the rows"
+ },
+ "torna": {
+  "it": "✓ La somma delle righe è uguale al numero della risposta",
+  "en": "✓ The rows add up to the number in the answer"
+ },
+ "incerte": {
+  "it": "Non contate, non sono sicuro che c'entrino:",
+  "en": "Not counted, I'm not sure they belong:"
+ },
+ "come": {
+  "it": "Mostra come l'ho calcolato",
+  "en": "Show how I calculated it"
+ },
+ "altre_righe": {
+  "it": "… e altre {n} righe",
+  "en": "… and {n} more rows"
+ },
+ "e_vuoto": {
+  "it": "Il file è vuoto.",
+  "en": "The file is empty."
+ },
+ "e_formato": {
+  "it": "Questo file non sembra una tabella né un estratto conto. Prova con un CSV, un Excel o il PDF dell'estratto conto.",
+  "en": "This file doesn't look like a table or a bank statement. Try a CSV, an Excel file or the statement PDF."
+ },
+ "e_saldi_non_tornano": {
+  "it": "Ho letto il PDF ma i conti non tornano: saldo iniziale {iniziale} + movimenti letti {letti} non fa il saldo finale {finale} (mancano {differenza}). Non rispondo su una lettura sbagliata: prova con il CSV o l'Excel dalla banca.",
+  "en": "I read the PDF but it doesn't add up: opening balance {iniziale} + transactions read {letti} isn't the closing balance {finale} ({differenza} missing). I won't answer on a wrong reading: try the bank's CSV or Excel export."
+ },
+ "e_troppo_grande": {
+  "it": "Il file pesa più di 10 MB.",
+  "en": "The file is larger than 10 MB."
+ },
+ "e_nessun_file": {
+  "it": "Prima carica un file.",
+  "en": "Upload a file first."
+ },
+ "e_rete": {
+  "it": "Non riesco a raggiungere il server. Riprova tra poco.",
+  "en": "I can't reach the server. Try again shortly."
+ },
+ "es_conto_1": {
+  "it": "Quanto ho speso in bollette a ottobre 2026?",
+  "en": "How much did I spend on bills in October 2026?"
+ },
+ "es_conto_2": {
+  "it": "Come sono andate le spese mese per mese nel 2026?",
+  "en": "How did my spending go month by month in 2026?"
+ },
+ "es_conto_3": {
+  "it": "Qual è stata la spesa più alta a ottobre 2026?",
+  "en": "What was the biggest expense in October 2026?"
+ },
+ "es_vendite_1": {
+  "it": "Qual è il prodotto che vende di più?",
+  "en": "Which product sells the most?"
+ },
+ "es_vendite_2": {
+  "it": "Come sono andate le vendite mese per mese nel 2026?",
+  "en": "How did sales go month by month in 2026?"
+ },
+ "es_vendite_3": {
+  "it": "Quanti quaderni ho venduto nel 2025?",
+  "en": "How many notebooks did I sell in 2025?"
+ },
+ "mostra_righe": {
+  "it": "Mostra le righe ({n})",
+  "en": "Show the rows ({n})"
+ }
+}
