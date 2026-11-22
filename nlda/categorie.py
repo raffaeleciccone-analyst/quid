@@ -32,7 +32,7 @@ def classifica(descrizioni, ia) -> dict:
     elenco = sorted(set(mascherate.values()))
     try:
         risposta = json.loads(ia.chiedi(SISTEMA, "CATEGORIE:\n" + "\n".join(elenco)))
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, OSError):          # OSError: IA online non raggiungibile o limite esaurito
         risposta = {}
     risposta = risposta if isinstance(risposta, dict) else {}
 

@@ -1,5 +1,5 @@
 {
- "giuste": 26,
+ "giuste": 20,
  "totale": 26,
  "categorie_bollette": [
   "ADDEBITO SDD A2A ENERGIA GAS",
@@ -16,7 +16,7 @@
    ],
    "esito": "ok",
    "numero": 187.4,
-   "frase": "A ottobre 2026 hai speso 187,40 € in bollette: ADDEBITO SDD ENEL ENERGIA SPA 92,10 €, ADDEBITO SDD A2A ENERGIA GAS 64,30 €, ADDEBITO SDD TIM SPA TELEFONO 31,00 €.",
+   "frase": "A ottobre 2026 hai speso 187,40 € in bollette.",
    "ho_capito": "somma di importo, uscite, bollette, ottobre 2026",
    "richiesta": {
     "tipo": "calcolo",
@@ -34,7 +34,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 0.7
+   "secondi": 1.1
   },
   {
    "domanda": "Quanto ho speso in bollette a novembre 2026?",
@@ -45,7 +45,7 @@
    ],
    "esito": "ok",
    "numero": 190.6,
-   "frase": "A novembre 2026 hai speso 190,60 € in bollette: ADDEBITO SDD ENEL ENERGIA SPA 88,40 €, ADDEBITO SDD A2A ENERGIA GAS 71,20 €, ADDEBITO SDD TIM SPA TELEFONO 31,00 €.",
+   "frase": "A novembre 2026 hai speso 190,60 € in bollette.",
    "ho_capito": "somma di importo, uscite, bollette, novembre 2026",
    "richiesta": {
     "tipo": "calcolo",
@@ -63,7 +63,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 0.8
+   "secondi": 1.3
   },
   {
    "domanda": "Quanto ho speso in bollette a ottobre?",
@@ -91,7 +91,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 0.6
+   "secondi": 1.3
   },
   {
    "domanda": "Quanto ho speso in bollette nel 2025?",
@@ -119,7 +119,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 0.8
+   "secondi": 1.8
   },
   {
    "domanda": "Quanto ho speso all'Esselunga nel 2026?",
@@ -147,7 +147,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 1.0
+   "secondi": 0.8
   },
   {
    "domanda": "Quanto ho incassato di stipendio nel 2025?",
@@ -175,7 +175,7 @@
     },
     "segno": "entrate"
    },
-   "secondi": 0.8
+   "secondi": 0.9
   },
   {
    "domanda": "Quante volte ho pagato TIM?",
@@ -198,7 +198,7 @@
      }
     ]
    },
-   "secondi": 0.7
+   "secondi": 2.2
   },
   {
    "domanda": "Quanto spendo in media di luce con ENEL?",
@@ -227,7 +227,7 @@
     ],
     "segno": "uscite"
    },
-   "secondi": 1.2
+   "secondi": 11.5
   },
   {
    "domanda": "Qual è stata la spesa più alta a ottobre 2026?",
@@ -251,7 +251,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 0.7
+   "secondi": 11.0
   },
   {
    "domanda": "Quanto ho speso in totale nel 2026?",
@@ -274,7 +274,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 1.2
+   "secondi": 3.1
   },
   {
    "domanda": "Come sono andate le mie spese mese per mese nel 2026?",
@@ -285,7 +285,7 @@
    ],
    "esito": "ok",
    "numero": 2680.25,
-   "frase": "Nel 2026, importo per mese: in tutto 2.680,25 €.",
+   "frase": "Nel 2026 hai speso 2.680,25 €, da 208,80 € a gennaio a 296,40 € a novembre.",
    "ho_capito": "somma di importo, uscite, 2026, per mese",
    "richiesta": {
     "tipo": "calcolo",
@@ -298,7 +298,7 @@
     "raggruppa": "mese",
     "segno": "uscite"
    },
-   "secondi": 0.7
+   "secondi": 3.8
   },
   {
    "domanda": "Quanto ho guadagnato di profitto?",
@@ -316,7 +316,7 @@
     "filtri": [],
     "cosa": "profitto"
    },
-   "secondi": 0.6
+   "secondi": 3.3
   },
   {
    "domanda": "Chi ha vinto lo scudetto?",
@@ -333,7 +333,7 @@
     "tipo": "non_capito",
     "filtri": []
    },
-   "secondi": 1.4
+   "secondi": 1.6
   },
   {
    "domanda": "e a novembre?",
@@ -344,7 +344,7 @@
    ],
    "esito": "ok",
    "numero": 190.6,
-   "frase": "A novembre 2026 hai speso 190,60 € in bollette: ADDEBITO SDD ENEL ENERGIA SPA 88,40 €, ADDEBITO SDD A2A ENERGIA GAS 71,20 €, ADDEBITO SDD TIM SPA TELEFONO 31,00 €.",
+   "frase": "A novembre 2026 hai speso 190,60 € in bollette.",
    "ho_capito": "somma di importo, uscite, bollette, novembre 2026",
    "richiesta": {
     "tipo": "calcolo",
@@ -362,7 +362,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 1.8
+   "secondi": 11.5
   },
   {
    "domanda": "In quale mese del 2026 ho speso di più in bollette?",
@@ -373,7 +373,7 @@
    ],
    "esito": "ok",
    "numero": 190.6,
-   "frase": "Mese con importo più alto: 2026-11, 190,60 €.",
+   "frase": "Mese con importo più alto: 2026-11, 190,60 €, da 123,00 € a gennaio a 190,60 € a novembre.",
    "ho_capito": "massimo di importo, uscite, bollette, 2026, per mese",
    "richiesta": {
     "tipo": "calcolo",
@@ -391,7 +391,7 @@
     "raggruppa": "mese",
     "segno": "uscite"
    },
-   "secondi": 0.8
+   "secondi": 11.5
   },
   {
    "domanda": "How much did I spend on bills in October 2026?",
@@ -402,7 +402,7 @@
    ],
    "esito": "ok",
    "numero": 187.4,
-   "frase": "In October 2026 you spent €187.40 on bills: ADDEBITO SDD ENEL ENERGIA SPA €92.10, ADDEBITO SDD A2A ENERGIA GAS €64.30, ADDEBITO SDD TIM SPA TELEFONO €31.00.",
+   "frase": "In October 2026 you spent €187.40 on bills.",
    "ho_capito": "sum of importo, expenses, bills, October 2026",
    "richiesta": {
     "tipo": "calcolo",
@@ -420,7 +420,7 @@
     },
     "segno": "uscite"
    },
-   "secondi": 0.8
+   "secondi": 11.1
   },
   {
    "domanda": "Qual è il prodotto che vende di più?",
@@ -440,56 +440,35 @@
     "filtri": [],
     "raggruppa": "prodotto"
    },
-   "secondi": 2.5
+   "secondi": 9.2
   },
   {
    "domanda": "Quanto ho incassato in totale nel 2025?",
-   "ok": true,
+   "ok": false,
    "atteso": [
     "ok",
     13764.0
    ],
-   "esito": "ok",
-   "numero": 13764.0,
-   "frase": "Nel 2025 il totale di importo è 13.764,00 €.",
-   "ho_capito": "somma di importo, 2025",
-   "richiesta": {
-    "tipo": "calcolo",
-    "operazione": "somma",
-    "misura": "importo",
-    "filtri": [],
-    "periodo": {
-     "anno": 2025
-    }
-   },
-   "secondi": 1.0
+   "esito": "eccezione",
+   "numero": null,
+   "frase": "HTTP Error 429: Too Many Requests",
+   "ho_capito": null,
+   "richiesta": null,
+   "secondi": 91.0
   },
   {
    "domanda": "Quante tazze ho venduto nel 2026?",
-   "ok": true,
+   "ok": false,
    "atteso": [
     "ok",
     330.0
    ],
-   "esito": "ok",
-   "numero": 330.0,
-   "frase": "Nel 2026 il totale di quantita è 330 (Tazza in ceramica).",
-   "ho_capito": "somma di quantita, Tazza in ceramica, 2026",
-   "richiesta": {
-    "tipo": "calcolo",
-    "operazione": "somma",
-    "misura": "quantita",
-    "filtri": [
-     {
-      "colonna": "prodotto",
-      "uguale": "Tazza in ceramica"
-     }
-    ],
-    "periodo": {
-     "anno": 2026
-    }
-   },
-   "secondi": 1.0
+   "esito": "eccezione",
+   "numero": null,
+   "frase": "HTTP Error 429: Too Many Requests",
+   "ho_capito": null,
+   "richiesta": null,
+   "secondi": 90.8
   },
   {
    "domanda": "Qual è il prodotto che vende di meno?",
@@ -509,30 +488,21 @@
     "filtri": [],
     "raggruppa": "prodotto"
    },
-   "secondi": 1.2
+   "secondi": 52.2
   },
   {
    "domanda": "Quanto ho venduto a marzo 2026?",
-   "ok": true,
+   "ok": false,
    "atteso": [
     "ok",
     1147.0
    ],
-   "esito": "ok",
-   "numero": 1147.0,
-   "frase": "A marzo 2026 il totale di importo è 1.147,00 €.",
-   "ho_capito": "somma di importo, marzo 2026",
-   "richiesta": {
-    "tipo": "calcolo",
-    "operazione": "somma",
-    "misura": "importo",
-    "filtri": [],
-    "periodo": {
-     "mese": 3,
-     "anno": 2026
-    }
-   },
-   "secondi": 0.8
+   "esito": "eccezione",
+   "numero": null,
+   "frase": "HTTP Error 429: Too Many Requests",
+   "ho_capito": null,
+   "richiesta": null,
+   "secondi": 90.7
   },
   {
    "domanda": "Come sono andate le vendite mese per mese?",
@@ -543,7 +513,7 @@
    ],
    "esito": "ok",
    "numero": 26381.0,
-   "frase": "In tutto il file, importo per mese: in tutto 26.381,00 €.",
+   "frase": "In tutto il file il totale di importo è 26.381,00 €, da 1.147,00 € a gennaio a 1.147,00 € a novembre.",
    "ho_capito": "somma di importo, per mese",
    "richiesta": {
     "tipo": "calcolo",
@@ -552,7 +522,7 @@
     "filtri": [],
     "raggruppa": "mese"
    },
-   "secondi": 1.9
+   "secondi": 0.9
   },
   {
    "domanda": "Quanto ho incassato con le candele a dicembre 2025?",
@@ -580,73 +550,49 @@
      "anno": 2025
     }
    },
-   "secondi": 5.8
+   "secondi": 31.4
   },
   {
    "domanda": "Qual è il prezzo medio dei quaderni?",
-   "ok": true,
+   "ok": false,
    "atteso": [
     "ok",
     4.0
    ],
-   "esito": "ok",
-   "numero": 4.0,
-   "frase": "In tutto il file la media di prezzo è 4,00 € (Quaderno).",
-   "ho_capito": "media di prezzo, Quaderno",
-   "richiesta": {
-    "tipo": "calcolo",
-    "operazione": "media",
-    "misura": "prezzo",
-    "filtri": [
-     {
-      "colonna": "prodotto",
-      "uguale": "Quaderno"
-     }
-    ]
-   },
-   "secondi": 3.0
+   "esito": "eccezione",
+   "numero": null,
+   "frase": "HTTP Error 429: Too Many Requests",
+   "ho_capito": null,
+   "richiesta": null,
+   "secondi": 90.8
   },
   {
    "domanda": "Quanti quaderni ho venduto in tutto?",
-   "ok": true,
+   "ok": false,
    "atteso": [
     "ok",
     1150.0
    ],
-   "esito": "ok",
-   "numero": 1150.0,
-   "frase": "In tutto il file il totale di quantita è 1.150 (Quaderno).",
-   "ho_capito": "somma di quantita, Quaderno",
-   "richiesta": {
-    "tipo": "calcolo",
-    "operazione": "somma",
-    "misura": "quantita",
-    "filtri": [
-     {
-      "colonna": "prodotto",
-      "uguale": "Quaderno"
-     }
-    ]
-   },
-   "secondi": 3.7
+   "esito": "eccezione",
+   "numero": null,
+   "frase": "HTTP Error 429: Too Many Requests",
+   "ho_capito": null,
+   "richiesta": null,
+   "secondi": 91.0
   },
   {
    "domanda": "Quanto ho speso in pubblicità?",
-   "ok": true,
+   "ok": false,
    "atteso": [
     "assente",
     null
    ],
-   "esito": "assente",
+   "esito": "eccezione",
    "numero": null,
-   "frase": "Nel file non c'è «pubblicità». Ci sono queste colonne: data, prodotto, quantita, importo, prezzo.",
-   "ho_capito": "",
-   "richiesta": {
-    "tipo": "assente",
-    "filtri": [],
-    "cosa": "pubblicità"
-   },
-   "secondi": 0.6
+   "frase": "HTTP Error 429: Too Many Requests",
+   "ho_capito": null,
+   "richiesta": null,
+   "secondi": 90.8
   }
  ]
 }

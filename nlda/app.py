@@ -87,7 +87,10 @@ def crea_app(ia=None, modo=None, tetti=None, oggi=date.today):
         limite = tetto(request)
         if limite:
             return errore(limite, {"tetti": list(tetti)}, 429)
-        r = domanda.rispondi(s["tabella"], testo, ia, s["categorie"], s["precedente"], lingua)
+        try:
+            r = domanda.rispondi(s["tabella"], testo, ia, s["categorie"], s["precedente"], lingua)
+        except OSError:                                 # rete giù o limite gratuito di Groq esaurito
+            return errore("ia_non_disponibile", codice=503)
         if r["richiesta"]:
             s["precedente"] = r["richiesta"]
         return r

@@ -101,3 +101,17 @@ def test_c15_file_sbagliato_errore_chiaro(nome, chiave):
 def test_domanda_senza_file_lo_dice():
     r = TestClient(crea_app(IAFinta(), modo="online")).post("/api/domanda", json={"testo": "ciao", "lingua": "it"})
     assert r.status_code == 400 and r.json()["errore"] == "nessun_file"
+
+
+def test_ia_che_non_risponde_messaggio_chiaro_non_errore_del_server():
+    class IAGiu:
+        esce_dal_pc = True
+
+        def chiedi(self, sistema, utente):
+            raise OSError("HTTP Error 429: Too Many Requests")
+
+    client = TestClient(crea_app(IAGiu(), modo="online"))
+    r = client.post("/api/file", files={"file": ("conto.csv", (FILE / "conto.csv").read_bytes())})
+    assert r.status_code == 200                                    # le categorie mancano: tutte incerte, niente crash
+    r = client.post("/api/domanda", json={"testo": "Quanto ho speso?", "lingua": "it"})
+    assert r.status_code == 503 and r.json()["errore"] == "ia_non_disponibile"

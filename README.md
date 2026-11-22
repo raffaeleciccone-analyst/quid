@@ -34,7 +34,7 @@ memoria solo per la visita, non viene mai salvato.
 
 | IA | Risposte giuste |
 |---|---|
-| Groq, `openai/gpt-oss-120b` (online, gratuito) | **26 su 26** |
+| Groq, `openai/gpt-oss-120b` (online, gratuito) | **26 su 26** (rifatta lo stesso giorno: 20 su 20, le ultime 6 bloccate dal limite giornaliero gratuito di Groq) |
 | Ollama, `qwen2.5:3b` (sul PC) | 7 su 26: non riconosce le categorie |
 
 Gli errori dell'IA sono sempre stati di comprensione, mai di calcolo, e la riga "Ho capito" li rende visibili.
@@ -44,7 +44,8 @@ Gli errori dell'IA sono sempre stati di comprensione, mai di calcolo, e la riga 
 - Il PDF è provato su un estratto finto impaginato come quello di una banca: nessuna banca pubblica estratti di
   esempio con movimenti. Ogni banca impagina a modo suo; per questo, se il saldo iniziale più i movimenti letti non
   fa il saldo finale, NLDA non risponde.
-- Online ci sono due tetti: 20 domande a persona e 300 al giorno in tutto (il piano gratuito di Groq ha dei limiti).
+- Online ci sono due tetti: 20 domande a persona e 300 al giorno in tutto, perché il piano gratuito di Groq ha un
+  limite giornaliero. Se Groq non risponde, la pagina lo dice e suggerisce di riprovare o di usarlo sul PC.
 
 ## Avviarlo
 
