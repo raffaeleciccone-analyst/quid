@@ -1,4 +1,4 @@
-# NLDA (riscrittura) — PIANO (come)
+# QUID — PIANO (come)
 
 > Il COSA sta in SPEC.md. Qui c'è il COME.
 > Ogni scelta tecnica cita la frase della spec che la giustifica.
@@ -94,14 +94,14 @@ Si valida con pydantic: un campo in più, una colonna inesistente, un'operazione
 - **Sessione in memoria.** Il file letto sta in memoria, legato a un identificativo di sessione, e scade dopo un'ora
   senza uso; non si scrive mai su disco. "Cosa NON fa" (niente salvataggio).
 - **Tetti online (F14).** Contatori in memoria: per visitatore (cookie di sessione) e per giorno. Sul PC
-  (`NLDA_MODO=pc`) i tetti non si applicano. Se il server si riavvia i contatori ripartono: accettabile e scritto.
-- **Online e PC (vincoli).** Lo stesso programma: online su Render con Groq; sul PC `python -m nlda` apre il browser
+  (`QUID_MODO=pc`) i tetti non si applicano. Se il server si riavvia i contatori ripartono: accettabile e scritto.
+- **Online e PC (vincoli).** Lo stesso programma: online su Render con Groq; sul PC `python -m quid` apre il browser
   e usa Ollama. La pagina dice in quale modo gira.
 
 ## 4. Struttura del codice
 
 ```
-nlda/
+quid/
   leggi.py        CSV ed Excel → Tabella: codifica, separatore, importi "1.234,50 €", righe vuote e di totale,
                   entrate/uscite separate, riconoscimento conto/vendite/altro            F8, F11
   pdf.py          estratto conto PDF → Tabella con i saldi; controllo dei saldi           F11, F12
@@ -147,5 +147,5 @@ tests/            un file per gruppo di criteri; l'IA nei test è finta (rispost
   il verde evidenziava l'anno invece dell'importo (ora il server manda `numero_testo`); sul telefono la riga di codice
   di "come l'ho calcolato" allargava la pagina a 1.086 px (griglia `minmax(0, 1fr)`). Il primo test C18 misurava a
   riquadri chiusi e NON se ne accorgeva: ora misura con tutto aperto, e la prova di rottura lo fa fallire.
-  Avvio: `NLDA_MODO=online NLDA_CHIAVE_FILE=… python -m nlda` (porta 8793) oppure `python -m nlda` sul PC (Ollama).
+  Avvio: `QUID_MODO=online QUID_CHIAVE_FILE=… python -m quid` (porta 8793) oppure `python -m quid` sul PC (Ollama).
 - [ ] 7. Tetti e pubblicazione (C17); poi, col via libera, il cambio con il vecchio NLDA.

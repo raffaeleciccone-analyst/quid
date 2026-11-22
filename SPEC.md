@@ -1,4 +1,6 @@
-# NLDA (riscrittura) — SPEC (cosa e perché)
+# QUID — SPEC (cosa e perché)
+
+> Nome scelto il 22/11/2026: QUID (QUestions on your Data; "il quid" = il punto essenziale).
 
 > Questo file dice COSA deve fare il programma, non COME. Il come sta in PIANO.md.
 > Stato: **APPROVATA il 22/11/2026** (intervista dello stesso giorno), F12 compresa. Riscrive da zero il vecchio
@@ -76,7 +78,7 @@ li deve calcolare il codice, e il modello li racconta soltanto.
 *(F14: limiti online, risposta del 22/11 "A")*
 - F14. **Online ci sono due tetti:** uno per visitatore e uno giornaliero per tutti (valori iniziali proposti:
   20 domande a persona, 300 al giorno; da tarare sui limiti gratuiti di Groq). Finito un tetto, il messaggio
-  è chiaro: "Per oggi le domande online sono finite: riprova domani, o avvia NLDA sul tuo PC" con il link alle
+  è chiaro: "Per oggi le domande online sono finite: riprova domani, o avvia QUID sul tuo PC" con il link alle
   istruzioni. Non si incollano chiavi personali nella pagina. Sul PC non ci sono tetti.
 
 ## 4. Cosa NON fa

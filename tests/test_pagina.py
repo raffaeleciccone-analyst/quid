@@ -8,8 +8,8 @@ from pathlib import Path
 import pytest
 import uvicorn
 
-from nlda import privacy
-from nlda.app import crea_app
+from quid import privacy
+from quid.app import crea_app
 
 playwright = pytest.importorskip("playwright.sync_api", reason="Playwright non installato: pip install playwright")
 FILE = Path(__file__).parent.parent / "prove" / "file"

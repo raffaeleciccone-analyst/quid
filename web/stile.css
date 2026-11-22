@@ -1,4 +1,4 @@
-/* NLDA: un quaderno di domande sui propri dati. Verde = numeri e azioni, ambra = righe incerte, rosso = errori. */
+/* QUID: un quaderno di domande sui propri dati. Verde = numeri e azioni, ambra = righe incerte, rosso = errori. */
 :root { color-scheme: light; --carta: #F3F5F4; --foglio: #fff; --inchiostro: #15201D; --tenue: #5B6B66; --linea: #D9E0DD;
   --verde: #0B6E5A; --verde2: #E3F1ED; --ambra: #9A5A06; --ambra2: #FBF0DF; --rosso: #B3261E; --rosso2: #FCE9E7;
   --r: 14px; --ombra: 0 1px 2px #15201D12, 0 6px 18px -10px #15201D40; --f: "Figtree", system-ui, sans-serif; }

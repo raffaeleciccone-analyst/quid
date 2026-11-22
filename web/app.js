@@ -1,10 +1,10 @@
-// NLDA: la pagina. I testi vengono da testi.json (IT/EN), le frasi delle risposte le scrive il server.
+// QUID: la pagina. I testi vengono da testi.json (IT/EN), le frasi delle risposte le scrive il server.
 // Tutto quello che arriva dal file o dal server entra come testo (textContent), mai come HTML.
 (function () {
   "use strict";
   var T = {}, lingua = "it", tipoFile = null, modo = { esce: true };
   var salvata = null;
-  try { salvata = localStorage.getItem("nlda-lingua"); } catch (e) { /* senza memoria: si usa la lingua del browser */ }
+  try { salvata = localStorage.getItem("quid-lingua"); } catch (e) { /* senza memoria: si usa la lingua del browser */ }
   lingua = salvata || ((navigator.language || "it").slice(0, 2) === "en" ? "en" : "it");
 
   function t(k, v) {
@@ -197,7 +197,7 @@
 
   // ---- avvio ----
   document.querySelectorAll("[data-lingua]").forEach(function (b) {
-    b.addEventListener("click", function () { lingua = b.dataset.lingua; try { localStorage.setItem("nlda-lingua", lingua); } catch (e) { /* niente */ } traduci(); });
+    b.addEventListener("click", function () { lingua = b.dataset.lingua; try { localStorage.setItem("quid-lingua", lingua); } catch (e) { /* niente */ } traduci(); });
   });
   $("file").addEventListener("change", function (e) { var f = e.target.files[0]; if (f) carica(f, f.name); e.target.value = ""; });
   document.querySelectorAll("[data-esempio]").forEach(function (b) {

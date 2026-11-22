@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from nlda import leggi
+from quid import leggi
 
 FILE = Path(__file__).parent.parent / "prove" / "file"
 

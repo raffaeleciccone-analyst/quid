@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from nlda import calcolo, categorie, leggi, richiesta, risposta
+from quid import calcolo, categorie, leggi, richiesta, risposta
 
 FILE = Path(__file__).parent.parent / "prove" / "file"
 

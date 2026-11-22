@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from nlda import categorie, domanda, ia, leggi, privacy
+from quid import categorie, domanda, ia, leggi, privacy
 
 FILE = Path(__file__).parent.parent / "prove" / "file"
 C1 = "Quanto ho speso in bollette a ottobre 2026?"

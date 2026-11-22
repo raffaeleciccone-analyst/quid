@@ -6,8 +6,8 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
-from nlda import privacy
-from nlda.app import crea_app
+from quid import privacy
+from quid.app import crea_app
 
 FILE = Path(__file__).parent.parent / "prove" / "file"
 BOLLETTE = {"tipo": "calcolo", "operazione": "somma", "misura": "importo", "segno": "uscite",

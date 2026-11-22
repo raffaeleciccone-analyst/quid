@@ -10,7 +10,7 @@ from pathlib import Path
 
 def _post(url, corpo, intestazioni, attesa):
     req = urllib.request.Request(url, json.dumps(corpo).encode(), {"content-type": "application/json",
-                                                                   "user-agent": "nlda/1.0", **intestazioni})
+                                                                   "user-agent": "quid/1.0", **intestazioni})
     with urllib.request.urlopen(req, timeout=attesa) as r:
         return json.loads(r.read())
 
@@ -21,9 +21,9 @@ class Groq:
     URL = "https://api.groq.com/openai/v1/chat/completions"
 
     def __init__(self, chiave=None, modello=None):
-        file = os.environ.get("NLDA_CHIAVE_FILE")
+        file = os.environ.get("QUID_CHIAVE_FILE")
         self.chiave = chiave or os.environ.get("GROQ_API_KEY") or (Path(file).read_text().strip() if file else None)
-        self.modello = modello or os.environ.get("NLDA_MODELLO", "openai/gpt-oss-120b")
+        self.modello = modello or os.environ.get("QUID_MODELLO", "openai/gpt-oss-120b")
 
     def chiedi(self, sistema, utente):
         corpo = {"model": self.modello, "temperature": 0, "response_format": {"type": "json_object"},
@@ -43,7 +43,7 @@ class Ollama:
     esce_dal_pc = False
 
     def __init__(self, modello=None, url=None):
-        self.modello = modello or os.environ.get("NLDA_MODELLO", "qwen2.5:3b")
+        self.modello = modello or os.environ.get("QUID_MODELLO", "qwen2.5:3b")
         self.url = url or os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
 
     def chiedi(self, sistema, utente):

@@ -1,5 +1,5 @@
-"""Prova con un'IA vera: domande su conto e vendite, risposta giusta calcolata qui a parte con pandas (non con nlda).
-Uso:  NLDA_CHIAVE_FILE=~/.chiavi/groq.txt python prove/prova_ia.py groq
+"""Prova con un'IA vera: domande su conto e vendite, risposta giusta calcolata qui a parte con pandas (non con quid).
+Uso:  QUID_CHIAVE_FILE=~/.chiavi/groq.txt python prove/prova_ia.py groq
       python prove/prova_ia.py ollama [modello]
 Risultato in prove/ia_<fornitore>_<modello>.json. Non è un test automatico: chiama un modello vero."""
 import json
@@ -8,7 +8,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from nlda import categorie, domanda, ia, leggi  # noqa: E402
+from quid import categorie, domanda, ia, leggi  # noqa: E402
 
 F = Path(__file__).parent / "file"
 conto = leggi.leggi((F / "conto.csv").read_bytes(), "conto.csv")

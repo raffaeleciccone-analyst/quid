@@ -6,7 +6,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from nlda.app import crea_app
+from quid.app import crea_app
 
 FILE = Path(__file__).parent.parent / "prove" / "file"
 SOMMA = {"tipo": "calcolo", "operazione": "somma", "misura": "importo"}

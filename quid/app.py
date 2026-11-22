@@ -20,8 +20,8 @@ MAX_BYTE = 10 * 1024 * 1024
 
 def crea_app(ia=None, modo=None, tetti=None, oggi=date.today):
     """tetti = (domande per visitatore al giorno, domande al giorno per tutti): solo online (F14, C17)."""
-    modo = modo or os.environ.get("NLDA_MODO", "online")
-    tetti = tetti or (int(os.environ.get("NLDA_TETTO_PERSONA", 20)), int(os.environ.get("NLDA_TETTO_GIORNO", 300)))
+    modo = modo or os.environ.get("QUID_MODO", "online")
+    tetti = tetti or (int(os.environ.get("QUID_TETTO_PERSONA", 20)), int(os.environ.get("QUID_TETTO_GIORNO", 300)))
     conteggi = {"giorno": None, "tutti": 0, "persone": {}}
     if ia is None:
         from . import ia as fornitori
@@ -32,11 +32,11 @@ def crea_app(ia=None, modo=None, tetti=None, oggi=date.today):
     def sessione(request, response):
         for k in [k for k, s in sessioni.items() if time.time() - s["uso"] > SCADENZA]:
             del sessioni[k]
-        sid = request.cookies.get("nlda")
+        sid = request.cookies.get("quid")
         if sid not in sessioni:
             sid = uuid.uuid4().hex
             sessioni[sid] = {"tabella": None, "categorie": {}, "precedente": None}
-            response.set_cookie("nlda", sid, httponly=True, samesite="lax")
+            response.set_cookie("quid", sid, httponly=True, samesite="lax")
         sessioni[sid]["uso"] = time.time()
         return sessioni[sid]
 

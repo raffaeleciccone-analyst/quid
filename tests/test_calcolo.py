@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from nlda import calcolo, leggi, richiesta, risposta
+from quid import calcolo, leggi, richiesta, risposta
 
 FILE = Path(__file__).parent.parent / "prove" / "file"
 # la risposta dell'IA sulle categorie (fase 3), scritta a mano: AMAZON è incerta

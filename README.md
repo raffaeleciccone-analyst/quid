@@ -1,4 +1,6 @@
-# NLDA — domande ai tuoi dati
+# QUID — domande ai tuoi dati
+
+*QUID: QUestions on your Data. E in italiano "il quid" è il punto essenziale, quello che cerchi.*
 
 **Carichi l'estratto conto o le vendite del negozio e chiedi in italiano: "quanto ho speso in bollette a ottobre?".
 Ricevi il numero, le righe da cui viene e la riga "Ho capito", così vedi subito se la domanda è stata capita bene.**
@@ -43,7 +45,7 @@ Gli errori dell'IA sono sempre stati di comprensione, mai di calcolo, e la riga 
 - Sul PC serve un modello più grande e un computer adatto: con un modello piccolo le categorie sbagliano.
 - Il PDF è provato su un estratto finto impaginato come quello di una banca: nessuna banca pubblica estratti di
   esempio con movimenti. Ogni banca impagina a modo suo; per questo, se il saldo iniziale più i movimenti letti non
-  fa il saldo finale, NLDA non risponde.
+  fa il saldo finale, QUID non risponde.
 - Online ci sono due tetti: 20 domande a persona e 300 al giorno in tutto, perché il piano gratuito di Groq ha un
   limite giornaliero. Se Groq non risponde, la pagina lo dice e suggerisce di riprovare o di usarlo sul PC.
 
@@ -51,8 +53,8 @@ Gli errori dell'IA sono sempre stati di comprensione, mai di calcolo, e la riga 
 
 ```
 pip install -r requirements.txt
-python -m nlda                                   # sul PC, con Ollama: si apre il browser
-NLDA_MODO=online NLDA_CHIAVE_FILE=percorso/chiave_groq.txt python -m nlda   # con Groq
+python -m quid                                   # sul PC, con Ollama: si apre il browser
+QUID_MODO=online QUID_CHIAVE_FILE=percorso/chiave_groq.txt python -m quid   # con Groq
 ```
 
 La chiave di Groq sta in un file fuori dal progetto (oppure nella variabile `GROQ_API_KEY`), mai nel codice.
