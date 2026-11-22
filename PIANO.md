@@ -143,5 +143,9 @@ tests/            un file per gruppo di criteri; l'IA nei test è finta (rispost
 - [x] 5. PDF e saldi (C13, C14). Le colonne Addebiti/Accrediti si leggono dalla riga d'intestazione (non dalle
   descrizioni "ADDEBITO SDD …": era il primo errore, scoperto proprio dal controllo dei saldi). Nessun estratto pubblico
   di banca vera utilizzabile: si prova sul PDF finto; il PDF vero dell'utente resta una prova facoltativa sul suo PC.
-- [ ] 6. Pagina: conversazione, IT/EN, telefono (C16, C18, C19).
+- [x] 6. Pagina: conversazione, IT/EN, telefono (C16, C18, C19). Bozza approvata il 22/11. Difetti trovati provandola:
+  il verde evidenziava l'anno invece dell'importo (ora il server manda `numero_testo`); sul telefono la riga di codice
+  di "come l'ho calcolato" allargava la pagina a 1.086 px (griglia `minmax(0, 1fr)`). Il primo test C18 misurava a
+  riquadri chiusi e NON se ne accorgeva: ora misura con tutto aperto, e la prova di rottura lo fa fallire.
+  Avvio: `NLDA_MODO=online NLDA_CHIAVE_FILE=… python -m nlda` (porta 8793) oppure `python -m nlda` sul PC (Ollama).
 - [ ] 7. Tetti e pubblicazione (C17); poi, col via libera, il cambio con il vecchio NLDA.

@@ -59,10 +59,14 @@ def test_c18_telefono_390_niente_scorrimento_di_lato(indirizzo, browser):
     pagina.set_input_files("#file", str(FILE / "conto.csv"))
     pagina.wait_for_selector("#barra:not([hidden])")
     assert "187,40 €" in _domanda(pagina, "Quanto ho speso in bollette a ottobre 2026?")
-    larghezza = pagina.evaluate("document.documentElement.scrollWidth")
-    assert larghezza <= 390, f"la pagina scorre di lato: {larghezza}px"
     pagina.click("details.come summary")                                  # i controlli si aprono e si chiudono
     assert pagina.is_visible("details.come code")
+    # si misura con TUTTO aperto: la riga di codice lunga sta dentro "come l'ho calcolato" (era il difetto vero)
+    pagina.evaluate("document.querySelectorAll('details').forEach(d => d.open = true)")
+    larghezza = pagina.evaluate("document.documentElement.scrollWidth")
+    assert larghezza <= 390, f"la pagina scorre di lato: {larghezza}px"
+    pagina.click("details.come summary")
+    assert not pagina.is_visible("details.come code")
     pagina.close()
 
 

@@ -42,7 +42,9 @@ details.esce code { font-size: 13px; overflow-wrap: anywhere; }
 
 .q { margin-top: 18px; }
 .domanda { font-weight: 700; font-size: 15px; color: var(--tenue); margin: 0 0 6px; padding-left: 10px; border-left: 4px solid var(--linea); overflow-wrap: anywhere; }
-.risposta { background: var(--foglio); border-radius: var(--r); box-shadow: var(--ombra); padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.risposta { background: var(--foglio); border-radius: var(--r); box-shadow: var(--ombra); padding: 16px; display: grid; gap: 12px;
+  grid-template-columns: minmax(0, 1fr); }   /* una riga di codice lunga scorre nel suo riquadro, non allarga la pagina (C18) */
+.risposta > * { min-width: 0; }
 .capito { font-size: 14px; color: var(--tenue); margin: 0; }
 .capito b { color: var(--inchiostro); font-weight: 600; }
 .frase { font-size: 21px; line-height: 1.3; font-weight: 600; margin: 0; overflow-wrap: anywhere; }
