@@ -148,4 +148,4 @@ tests/            un file per gruppo di criteri; l'IA nei test è finta (rispost
   di "come l'ho calcolato" allargava la pagina a 1.086 px (griglia `minmax(0, 1fr)`). Il primo test C18 misurava a
   riquadri chiusi e NON se ne accorgeva: ora misura con tutto aperto, e la prova di rottura lo fa fallire.
   Avvio: `QUID_MODO=online QUID_CHIAVE_FILE=… python -m quid` (porta 8793) oppure `python -m quid` sul PC (Ollama).
-- [x] 7. Tetti e pubblicazione (C17): online il 23/11 su https://quid-piz0.onrender.com (tetto 40 al giorno); vecchio NLDA tolto da Render, link aggiornati.
+- [x] 7. Tetti e pubblicazione (C17): online il 23/11 su https://quid-dati.onrender.com (tetto 40 al giorno); vecchio NLDA tolto da Render, link aggiornati.
