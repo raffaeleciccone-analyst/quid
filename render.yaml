@@ -1,7 +1,7 @@
 # Render: New -> Blueprint -> questo repository. L'unica cosa da scrivere a mano e' GROQ_API_KEY.
 services:
   - type: web
-    name: quid
+    name: quid-dati
     runtime: python
     plan: free
     region: frankfurt
