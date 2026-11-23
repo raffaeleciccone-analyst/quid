@@ -46,7 +46,7 @@ Gli errori dell'IA sono sempre stati di comprensione, mai di calcolo, e la riga 
 - Il PDF è provato su un estratto finto impaginato come quello di una banca: nessuna banca pubblica estratti di
   esempio con movimenti. Ogni banca impagina a modo suo; per questo, se il saldo iniziale più i movimenti letti non
   fa il saldo finale, QUID non risponde.
-- Online ci sono due tetti: 20 domande a persona e 300 al giorno in tutto, perché il piano gratuito di Groq ha un
+- Online ci sono due tetti: 20 domande a persona e 40 al giorno in tutto, perché il piano gratuito di Groq ha un
   limite giornaliero. Se Groq non risponde, la pagina lo dice e suggerisce di riprovare o di usarlo sul PC.
 
 ## Avviarlo

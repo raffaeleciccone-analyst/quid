@@ -21,7 +21,7 @@ MAX_BYTE = 10 * 1024 * 1024
 def crea_app(ia=None, modo=None, tetti=None, oggi=date.today):
     """tetti = (domande per visitatore al giorno, domande al giorno per tutti): solo online (F14, C17)."""
     modo = modo or os.environ.get("QUID_MODO", "online")
-    tetti = tetti or (int(os.environ.get("QUID_TETTO_PERSONA", 20)), int(os.environ.get("QUID_TETTO_GIORNO", 300)))
+    tetti = tetti or (int(os.environ.get("QUID_TETTO_PERSONA", 20)), int(os.environ.get("QUID_TETTO_GIORNO", 40)))
     conteggi = {"giorno": None, "tutti": 0, "persone": {}}
     if ia is None:
         from . import ia as fornitori

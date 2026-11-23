@@ -1,0 +1,25 @@
+# Render: New -> Blueprint -> questo repository. L'unica cosa da scrivere a mano e' GROQ_API_KEY.
+services:
+  - type: web
+    name: quid
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m quid
+    healthCheckPath: /api/modo
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.5"
+      - key: HOST
+        value: 0.0.0.0
+      - key: QUID_APRI
+        value: "0"
+      - key: QUID_MODO
+        value: online
+      - key: QUID_TETTO_PERSONA
+        value: "20"
+      - key: QUID_TETTO_GIORNO
+        value: "40"
+      - key: GROQ_API_KEY
+        sync: false

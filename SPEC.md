@@ -76,8 +76,8 @@ li deve calcolare il codice, e il modello li racconta soltanto.
   novembre 2026", così un errore di comprensione si vede subito. Un pulsante "Nuova domanda" riparte da zero.
 
 *(F14: limiti online, risposta del 22/11 "A")*
-- F14. **Online ci sono due tetti:** uno per visitatore e uno giornaliero per tutti (valori iniziali proposti:
-  20 domande a persona, 300 al giorno; da tarare sui limiti gratuiti di Groq). Finito un tetto, il messaggio
+- F14. **Online ci sono due tetti:** uno per visitatore e uno giornaliero per tutti (20 domande a persona,
+  40 al giorno; il 22/11 il piano gratuito di Groq si è esaurito dopo circa 50 chiamate, quindi 300 era troppo). Finito un tetto, il messaggio
   è chiaro: "Per oggi le domande online sono finite: riprova domani, o avvia QUID sul tuo PC" con il link alle
   istruzioni. Non si incollano chiavi personali nella pagina. Sul PC non ci sono tetti.
 
@@ -140,7 +140,7 @@ impaginato come un PDF di banca, con saldo iniziale e finale) e un esempio pubbl
   novembre 2026" e il numero di novembre. Dopo "Nuova domanda", "e a novembre?" da solo → chiede cosa si intende.
 
 **Online e telefono (F14, vincoli)**
-- C17 (F14). La 21ª domanda dello stesso visitatore, o la 301ª del giorno → messaggio dei tetti, nessuna chiamata a
+- C17 (F14). La 21ª domanda dello stesso visitatore, o la 41ª del giorno → messaggio dei tetti, nessuna chiamata a
   Groq. Il giorno dopo si riparte. Avviato sul PC → nessun tetto.
 - C18. A 390 px di larghezza (telefono) la pagina non scorre di lato e si carica un file e si fa una domanda.
 - C19. Con il pulsante EN la pagina è in inglese; "How much did I spend on bills in October 2026?" dà lo stesso
